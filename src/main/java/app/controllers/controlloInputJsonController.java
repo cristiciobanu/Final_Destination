@@ -7,12 +7,13 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import app.services.ApiCallObject;
+import app.services.ApiCallObjects;
 import app.utils.GlobalProperties;
 
 @RestController
-public class Weather_JsonController {
+public class controlloInputJsonController {
 	
-	@RequestMapping("/greeting")
+	@RequestMapping("/asd")
     public Object greeting(
     		@RequestParam(value="city", required = false, defaultValue="london") String city) {
     	
