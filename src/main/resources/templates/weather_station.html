@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Stazione Meteo</title> 
+<head>
+    <title>Stazione Meteo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/reset.css" />
-	<link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" /> -->
+		<link rel="stylesheet" href="..\static\css\reset.css" />
+		<link rel="stylesheet" href="..\static\css\style.css" />
 </head>
 <body>
     <p th:text="${infoCams[5].name}" />
@@ -13,7 +15,7 @@
     <p th:text="${infoWeather.cod}" />
     <p th:text="${infoWeather.visibility}" />
     <p th:text="${infoWeather.main}" />
-		
+
 		<form action="/greeting" method="GET">
 				<input type="text" id="city" name="city" placeholder="Insert a city name..." />
 		</form>

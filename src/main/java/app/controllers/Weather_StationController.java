@@ -18,8 +18,8 @@ public class Weather_StationController {
 		  
 		  UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPath()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", "london").build();
+			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
+			      .queryParam("q", "bologna").build();
 		  
 		  ApiCallObject y = new ApiCallObject(urlWeather.toString());
 	      model.addAttribute("infoWeather", y.getResult());
