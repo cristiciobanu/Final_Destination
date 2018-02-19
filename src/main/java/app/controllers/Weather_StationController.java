@@ -16,13 +16,6 @@ public class Weather_StationController {
 	  @RequestMapping("/weather_station")
 	  public String weather(Model model) {
 		  
-		  UriComponents urlCams = UriComponentsBuilder.newInstance()
-			      .scheme("http").host(GlobalProperties.getCamsHost())
-			      .path(GlobalProperties.getCamsPath()).build();
-		  
-		  ApiCallObjects x = new ApiCallObjects(urlCams.toString());
-		  model.addAttribute("infoCams", x.getResult());
-		  
 		  UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
 			      .path(GlobalProperties.getWeatherPath()).queryParam("appid", GlobalProperties.getWeatherId())
