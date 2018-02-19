@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Stazione Meteo</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <p th:text="${infoCams[5].name}" />
+    <a th:href="${infoCams[5].url}" target="_blank">Link to WebCam</a>
+    <p th:text="${infoWeather.name}" />
+    <p th:text="${infoWeather.cod}" />
+    <p th:text="${infoWeather.visibility}" />
+    <p th:text="${infoWeather.main}" />
+		
+		<form action="/greeting" method="GET">
+				<input type="text" id="city" name="city" placeholder="Insert a city name..." />
+		</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/module1.js" charset="utf-8"></script>
+<script src="js/module2.js" charset="utf-8"></script>
+<script src="js/main.js" charset="utf-8"></script>
+</html>
