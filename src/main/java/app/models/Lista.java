@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Lista{
 	
-	private String dt_txt;;	
+	private String dt_txt;
 	private Main main;
 	
 	public String getDt_txt() {
