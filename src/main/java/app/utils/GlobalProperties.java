@@ -12,7 +12,7 @@ public class GlobalProperties {
 	private static String scheme;
 
 	private static String weatherHost, weatherPathWeather, weatherPathForecast, weatherId;
-	private static String teleportHost, teleportPathStart, teleportPathEnd;
+	private static String teleportHost, teleportPathStart, teleportPathEnd, teleportPathCities;
 
 	public static String getWeatherHost() {
 		return weatherHost;
@@ -76,6 +76,14 @@ public class GlobalProperties {
 
 	public static void setTeleportPathEnd(String teleportPathEnd) {
 		GlobalProperties.teleportPathEnd = teleportPathEnd;
+	}
+
+	public static String getTeleportPathCities() {
+		return teleportPathCities;
+	}
+
+	public static void setTeleportPathCities(String teleportPathCities) {
+		GlobalProperties.teleportPathCities = teleportPathCities;
 	}
 
 }
