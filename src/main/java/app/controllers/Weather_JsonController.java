@@ -7,6 +7,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import app.services.ApiCallObject;
+import app.services.ApiCallObjectWForecast;
 import app.utils.GlobalProperties;
 
 @RestController
@@ -18,10 +19,10 @@ public class Weather_JsonController {
     	
     	UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
+			      .path(GlobalProperties.getWeatherPathForecast()).queryParam("appid", GlobalProperties.getWeatherId())
 			      .queryParam("q", city).build();
     	
-    	ApiCallObject y = new ApiCallObject(urlWeather.toString());
+    	ApiCallObjectWForecast y = new ApiCallObjectWForecast(urlWeather.toString());
     	
         return y.getResult();
     }

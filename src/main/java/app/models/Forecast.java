@@ -14,7 +14,7 @@ public class Forecast {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public Object getList() {
+	public Lista getList() {
 		return list;
 	}
 	public void setList(Lista list) {

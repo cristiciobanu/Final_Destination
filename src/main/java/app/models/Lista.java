@@ -11,11 +11,6 @@ public class Lista{
 	private String dt_txt;;	
 	private Main main;
 	
-	public Lista(Main m, String s) {
-		setDt_txt(s);
-		setMain(m);
-	}
-	
 	public String getDt_txt() {
 		return dt_txt;
 	}
