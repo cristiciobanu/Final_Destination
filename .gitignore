@@ -8,3 +8,4 @@ build
 .sass-cache
 node_modules
 style.css.map
+style.css
