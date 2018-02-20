@@ -1,4 +1,4 @@
-package app.dataManage;
+package app.models;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,12 +11,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceInitializedEvent;
 
 public class GestioneTemperature {
 	Date date;
-	HashMap<Date, LinkedList<Double>> map;
+	LinkedList<TemperatureGiorno> map;
 	
 	public static final SimpleDateFormat DATEFORMAT= new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
 	
 	public GestioneTemperature() {
-		map = new HashMap<>();
+		map = new LinkedList<>();
 		map.clear();
 		date = new Date();
 		

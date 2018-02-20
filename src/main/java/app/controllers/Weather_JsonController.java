@@ -25,4 +25,16 @@ public class Weather_JsonController {
     	
         return y.getResult();
     }
+	
+//	@RequestMapping("/mediaTemperature")
+//		public Object mediaTemperature(
+//				@RequestParam(value ="city",defaultValue = "bologna") String city) {
+//						UriComponents urlWeather = UriComponentsBuilder.newInstance()
+//				      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
+//				      .path(GlobalProperties.getWeatherPathForecast()).queryParam("appid", GlobalProperties.getWeatherId())
+//				      .queryParam("q", city).build();
+//			ApiCallObject y = new ApiCallObject(urlWeather.toString());
+//			
+//			return y.getResult();
+//		}
 }
