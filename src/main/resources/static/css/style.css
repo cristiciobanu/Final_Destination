@@ -8,4 +8,15 @@ li {
 .search {
   text-align: center; }
 
+body {
+  width: 95%;
+  margin: 0 auto; }
+
+@media (min-width: 768px) {
+  body {
+    width: 90%; } }
+@media (min-width: 1080px) {
+  body {
+    width: 80%; } }
+
 /*# sourceMappingURL=style.css.map */

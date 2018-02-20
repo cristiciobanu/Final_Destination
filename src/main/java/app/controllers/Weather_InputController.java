@@ -13,9 +13,22 @@ import app.utils.GlobalProperties;
 @RestController
 public class Weather_InputController {
 	
-	@RequestMapping("/asd")
-    public Object greeting(
+	@RequestMapping("/searchCity")
+    public Object searchCity(
     		@RequestParam(value="city", required = false, defaultValue="bologna") String city) {
+    	
+    	UriComponents urlcity = UriComponentsBuilder.newInstance()
+			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getTeleportHost())
+			      .path(GlobalProperties.getTeleportPathCities()).queryParam("search", city).build();
+    	
+    	ApiCallObject y = new ApiCallObject(urlcity.toString());
+    	
+        return y.getResult();
+    }
+	
+	@RequestMapping("/getId")
+    public Object getId(
+    		@RequestParam(value="city", required = false) String city) {
     	
     	UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())

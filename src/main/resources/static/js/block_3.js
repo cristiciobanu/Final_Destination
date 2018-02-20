@@ -4,7 +4,7 @@ var searchCity = (function () {
 
   var $wrapper;
   var $lista;
-  var URL = "https://api.teleport.org/api/cities/?search={name}"; //"https://restcountries.eu/rest/v2/name/{name}";
+  // var URL = "https://api.teleport.org/api/cities/?search={name}"; //"https://restcountries.eu/rest/v2/name/{name}";
 
   /* CACHING VARIABLES */
   function _setup() {
@@ -25,24 +25,21 @@ var searchCity = (function () {
        dataType: 'json',
        cache: false,
        success: function(data) {
-         console.log(url);
-         console.log(data.geoname_id);
-         $lista.append("<li class='element' data-id='"+data.geoname_id+"'>"+name+"</li>");
-         debugger;
+         $lista.append("<a href='#'><li class='element' data-id='"+data.geoname_id+"'>"+name+"</li></a>");
        }
      });
   };
 
   var getCountry = function(param) {
-      var url = URL;
-      url = url.replace("{name}",param);
+       var url = "/searchCity";
+      // url = url.replace("{name}",param);
       $.ajax({
        url: url,
        type: "GET",
+       data: { city: param},
        dataType: 'json',
        cache: false,
        success: function(data) {
-         console.log(url);
          $wrapper.find('.lista').empty();
          data._embedded["city:search-results"].forEach(function(element){
            getId(element._links["city:item"].href, element.matching_full_name);
