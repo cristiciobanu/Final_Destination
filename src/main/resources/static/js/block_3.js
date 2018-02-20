@@ -15,23 +15,12 @@ var searchCity = (function () {
   };
 
   /* PRIVATE BUSINESS FUNCTIONS */
-	const getId = function(param, name) {
-		getData(param).then(
-			function(response) {
-				$lista.append("<a href='#'><li class='element' data-id='"+response.geoname_id+"'>"+name+"</li></a>");
-			},
-			function(error) {
-				console.error("Failed!", error);
-			}
-		);
-	};
-
   const getCity = function(param) {
     getData("/searchCity?search="+param).then(
       function(response) {
 				$wrapper.find('.lista').empty();
 				response._embedded["city:search-results"].forEach(function(element){
-					getId(element._links["city:item"].href, element.matching_full_name);
+					$lista.append("<a href='#'><li class='element' data-id='"+element._links["city:item"].href+"'>"+element.matching_full_name+"</li></a>");;
 				 });
       },
       function(error) {
@@ -61,7 +50,6 @@ var searchCity = (function () {
           reject(Error(req.statusText));
         }
       };
-
       // Handle network errors
       req.onerror = function() {
         reject(Error("Network Error"));
@@ -84,9 +72,16 @@ var searchCity = (function () {
 			}
 	};
 
-	var refresh = function($this){
-		$('input[type=hidden]').val(($this.find('LI').data('id')));
-		console.log($this.find('LI').data('id'));
+	var refresh = function($this){+
+		getData($this.find('LI').data('id')).then(
+			function(response) {
+				$('input[type=hidden]').val(response.geoname_id);
+				console.log(response.geoname_id);
+			},
+			function(error) {
+				console.error("Failed!", error);
+			}
+		);
 		BOOLEAN = false;
 		$('.form').submit();
 	};
