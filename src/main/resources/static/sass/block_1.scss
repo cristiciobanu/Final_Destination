@@ -1,18 +1,16 @@
-$fullWidth: calc(99vw - 6px);
-
+$fullWidth: 100%;
 // TOP IMG \\
 
-img {
+.bgTop {
   width: $fullWidth;
-  height: $fullWidth;
+  height: 90%;
 }
 
 .imgCont {
     position: relative;
     text-align: center;
-    height: $fullWidth;
     color: white;
-    line-height: 15vw;
+    line-height: 11vw;
 }
 
 .town {
@@ -23,13 +21,17 @@ img {
       font-size: 8vw;
 }
 
-.gradi, .iconM {
+.gradi {
       font-size: 15vw;
+}
+
+.iconM {
+  width: 30vw;
 }
 
 .onImg {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
