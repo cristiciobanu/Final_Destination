@@ -8,3 +8,9 @@ build
 .sass-cache
 node_modules
 style.css.map
+
+block_1.html
+block_2.html
+block_1.scss
+block_2.scss
+style.css
