@@ -20,11 +20,11 @@ public class Weather_JsonController {
     	UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
 			      .path(GlobalProperties.getWeatherPathForecast()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", city).build();
+			      .queryParam("q", city).queryParam("units", "metric").build();
     	
     	ApiCallObjectWForecast y = new ApiCallObjectWForecast(urlWeather.toString());
     	
-        return y.getResult();
+        return y.getResult().getList()[0];
     }
 	
 //	@RequestMapping("/mediaTemperature")

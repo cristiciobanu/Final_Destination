@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Lista{
-		
 	
 	private String dt_txt;;	
 	private Main main;
@@ -23,6 +22,4 @@ public class Lista{
 	public void setMain(Main main) {
 		this.main = main;
 	}
-	
-	
-	}
+}

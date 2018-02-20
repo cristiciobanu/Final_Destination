@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Forecast {
 	
 	private int cnt;
-	private Lista list;
+	private Lista[] list;
 	
 	public int getCnt() {
 		return cnt;
@@ -14,10 +14,10 @@ public class Forecast {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public Lista getList() {
+	public Lista[] getList() {
 		return list;
 	}
-	public void setList(Lista list) {
+	public void setList(Lista[] list) {
 		this.list = list;
 	}
 	

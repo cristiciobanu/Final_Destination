@@ -2,14 +2,13 @@ package app.models;
 
 public class Main {
 	
-	private int temp;
+	private double temp;
 	
-	public void setTemp(String temp) {
-		this.temp = Integer.parseInt(temp);
-		this.temp+= 273;
+	public void setTemp(double temp) {
+		this.temp = temp;
 	}
 	
-	public int getTemp() {
+	public double getTemp() {
 		return temp;
 	}
 
