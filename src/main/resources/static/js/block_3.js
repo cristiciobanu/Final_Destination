@@ -8,17 +8,29 @@ var searchCity = (function () {
 
   /* CACHING VARIABLES */
   function _setup() {
-    $wrapper = $('.searchCity');
+    $wrapper = $('.search');
     $lista = $('.lista');
   };
 
   /* PRIVATE BUSINESS FUNCTIONS */
   var addElement = function(data){
     console.log(data);
-    $wrapper.find('.lista').empty();
-    data._embedded["city:search-results"].forEach(function(element){
-      $lista.append("<li class='element'>"+element.matching_full_name+"</li>"); //
-    });
+
+  };
+
+  var getId= function(url, name) {
+      $.ajax({
+       url: url,
+       type: "GET",
+       dataType: 'json',
+       cache: false,
+       success: function(data) {
+         console.log(url);
+         console.log(data.geoname_id);
+         $lista.append("<li class='element' data-id='"+data.geoname_id+"'>"+name+"</li>");
+         debugger;
+       }
+     });
   };
 
   var getCountry = function(param) {
@@ -31,10 +43,12 @@ var searchCity = (function () {
        cache: false,
        success: function(data) {
          console.log(url);
-              addElement(data);
-          }
-      });
-
+         $wrapper.find('.lista').empty();
+         data._embedded["city:search-results"].forEach(function(element){
+           getId(element._links["city:item"].href, element.matching_full_name);
+         });
+      }
+    });
   };
 
   var finder = function() {
