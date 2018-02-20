@@ -1,11 +1,11 @@
 img {
-  width: calc(100% - 2px);
-  height: calc(100% - 2px);
-  margin: 1px; }
+  width: calc(99vw - 6px);
+  height: calc(99vw - 6px); }
 
 .imgCont {
   position: relative;
   text-align: center;
+  height: calc(99vw - 6px);
   color: white;
   line-height: 15vw; }
 
@@ -15,7 +15,7 @@ img {
 .meteo, .date {
   font-size: 8vw; }
 
-.gradi, #meteo {
+.gradi, .iconM {
   font-size: 15vw; }
 
 .onImg {
@@ -23,17 +23,5 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
-
-.meteoNext5 {
-  display: flex;
-  justify-content: space-evenly; }
-
-input {
-  position: fixed;
-  bottom: 0px;
-  height: 3vh;
-  width: 100vw;
-  border: 1px solid gray;
-  color: grey; }
 
 /*# sourceMappingURL=style.css.map */
