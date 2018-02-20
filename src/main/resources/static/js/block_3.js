@@ -4,7 +4,6 @@ var searchCity = (function () {
 
   var $wrapper;
   var $lista;
-  // var URL = "https://api.teleport.org/api/cities/?search={name}"; //"https://restcountries.eu/rest/v2/name/{name}";
 
   /* CACHING VARIABLES */
   function _setup() {
@@ -13,53 +12,79 @@ var searchCity = (function () {
   };
 
   /* PRIVATE BUSINESS FUNCTIONS */
-  var addElement = function(data){
-    console.log(data);
+	const getId = function(param, name) {
+		getData(param).then(
+			function(response) {
+				$lista.append("<a href='#'><li class='element' data-id='"+response.geoname_id+"'>"+name+"</li></a>");
+			},
+			function(error) {
+				console.error("Failed!", error);
+			}
+		);
+	};
 
-  };
-
-  var getId= function(url, name) {
-      $.ajax({
-       url: url,
-       type: "GET",
-       dataType: 'json',
-       cache: false,
-       success: function(data) {
-         $lista.append("<a href='#'><li class='element' data-id='"+data.geoname_id+"'>"+name+"</li></a>");
-       }
-     });
-  };
-
-  var getCountry = function(param) {
-       var url = "/searchCity";
-      // url = url.replace("{name}",param);
-      $.ajax({
-       url: url,
-       type: "GET",
-       data: { city: param},
-       dataType: 'json',
-       cache: false,
-       success: function(data) {
-         $wrapper.find('.lista').empty();
-         data._embedded["city:search-results"].forEach(function(element){
-           getId(element._links["city:item"].href, element.matching_full_name);
-         });
+  const getCity = function(param) {
+    getData("/searchCity?search="+param).then(
+      function(response) {
+				$wrapper.find('.lista').empty();
+				response._embedded["city:search-results"].forEach(function(element){
+					getId(element._links["city:item"].href, element.matching_full_name);
+				 });
+      },
+      function(error) {
+        console.error("Failed!", error);
       }
+    );
+  };
+
+
+  const getData = function(url) {
+    // Return a new promise.
+    return new Promise(function(resolve, reject) {
+      // Do the usual XHR stuff
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+
+      req.onload = function() {
+        // This is called even on 404 etc
+        // so check the status
+        if (req.status == 200) {
+          // Resolve the promise with the response text
+          resolve(req.response);
+        }
+        else {
+          // Otherwise reject with the status text
+          // which will hopefully be a meaningful error
+          reject(Error(req.statusText));
+        }
+      };
+
+      // Handle network errors
+      req.onerror = function() {
+        reject(Error("Network Error"));
+      };
+
+      // Make the request
+      req.responseType = 'json';
+      req.send();
     });
   };
 
-  var finder = function() {
-    var $this = $(this);
-    var text = $this.val();
-    if(text.trim().length >= 2) {
-       getCountry(text);
-    }
-  };
+	var check = function(){
+		var $this = $(this);
+		var text =$this.val();
+			if(text.trim().length == 0){
+				$wrapper.find('.lista').empty();
+			}
+			else{
+				getCity(text);
+			}
+	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-    $wrapper.on('keyup','input',finder);
+    $wrapper.on('keyup','input',check);
   };
 
   function _init() {

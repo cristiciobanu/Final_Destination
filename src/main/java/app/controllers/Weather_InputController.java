@@ -15,11 +15,12 @@ public class Weather_InputController {
 	
 	@RequestMapping("/searchCity")
     public Object searchCity(
-    		@RequestParam(value="city", required = false, defaultValue="bologna") String city) {
+    		@RequestParam(value="search", required = false) String city)
+    		{
     	
     	UriComponents urlcity = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getTeleportHost())
-			      .path(GlobalProperties.getTeleportPathCities()).queryParam("search", city).build();
+			      .path(GlobalProperties.getTeleportPathCities()).queryParam("search", city).queryParam("limit", 10).build();
     	
     	ApiCallObject y = new ApiCallObject(urlcity.toString());
     	

@@ -1,12 +1,40 @@
-input{
-  text-align: center;
-  border-radius: 10px;
-}
-
-li{
-  border-bottom: 1px solid lightgrey;
-}
-
 .search{
-  text-align: center;
+	margin-top: 100vh;
+	text-align: center;
+	position: relative;
+
+	.input{
+		text-align: center;
+		border-radius: 10px;
+		width: 100%;
+		font-size: 100%;
+    line-height: inherit;
+    font-family: inherit;
+	}
+
+	.lista {
+		background-color: #fafafa;
+		position: absolute;
+		bottom: 100%;
+		// border: 1px solid lightgrey;
+
+		li{
+			text-align: left;
+			border: 1px solid lightgrey;
+			border-radius: 10px;
+			margin: 2px;
+			padding: 5px;
+		}
+
+		a{
+			text-decoration: none;
+			color: grey;
+
+			&:hover{
+				color: #484747;
+				font-size: 13;
+				font-weight: bold;
+			}
+		}
+	}
 }
