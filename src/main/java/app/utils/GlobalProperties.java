@@ -1,6 +1,5 @@
 package app.utils;
 
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -11,8 +10,9 @@ import org.springframework.stereotype.Component;
 public class GlobalProperties {
 
 	private static String scheme;
-    
-    private static String weatherHost, weatherPathWeather, weatherPathForecast, weatherId;
+
+	private static String weatherHost, weatherPathWeather, weatherPathForecast, weatherId;
+	private static String teleportHost, teleportPathStart, teleportPathEnd;
 
 	public static String getWeatherHost() {
 		return weatherHost;
@@ -52,6 +52,30 @@ public class GlobalProperties {
 
 	public static void setWeatherPathForecast(String weatherPathForecast) {
 		GlobalProperties.weatherPathForecast = weatherPathForecast;
+	}
+
+	public static String getTeleportPathStart() {
+		return teleportPathStart;
+	}
+
+	public static void setTeleportPathStart(String teleportPathStart) {
+		GlobalProperties.teleportPathStart = teleportPathStart;
+	}
+
+	public static String getTeleportHost() {
+		return teleportHost;
+	}
+
+	public static void setTeleportHost(String teleportHost) {
+		GlobalProperties.teleportHost = teleportHost;
+	}
+
+	public static String getTeleportPathEnd() {
+		return teleportPathEnd;
+	}
+
+	public static void setTeleportPathEnd(String teleportPathEnd) {
+		GlobalProperties.teleportPathEnd = teleportPathEnd;
 	}
 
 }
