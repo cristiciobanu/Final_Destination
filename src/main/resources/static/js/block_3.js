@@ -4,11 +4,14 @@ var searchCity = (function () {
 
   var $wrapper;
   var $lista;
-
+	var $a;
+	var BOOLEAN;
   /* CACHING VARIABLES */
   function _setup() {
     $wrapper = $('.search');
     $lista = $('.lista');
+		$a = $('UL');
+		BOOLEAN = true;
   };
 
   /* PRIVATE BUSINESS FUNCTIONS */
@@ -80,11 +83,29 @@ var searchCity = (function () {
 				getCity(text);
 			}
 	};
+
+	var refresh = function($this){
+		$('input[type=hidden]').val(($this.find('LI').data('id')));
+		console.log($this.find('LI').data('id'));
+		BOOLEAN = false;
+		$('.form').submit();
+	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
+		$(document).ready(function() {
+  		$('form').on('submit', function(e){
+    			if(BOOLEAN === true){
+      			e.preventDefault();
+					}
+  		});
+		});
     $wrapper.on('keyup','input',check);
+		$a.on('click','a', function(){
+			var $this = $(this);
+			refresh($this);
+		});
   };
 
   function _init() {
