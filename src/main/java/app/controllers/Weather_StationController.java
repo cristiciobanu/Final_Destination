@@ -19,7 +19,7 @@ public class Weather_StationController {
 		  UriComponents urlWeather = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
 			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", "bologna").build();
+			      .queryParam("q", "bologna").queryParam("units", "metric").build();
 		  
 		  ApiCallObject y = new ApiCallObject(urlWeather.toString());
 	      model.addAttribute("infoWeather", y.getResult());

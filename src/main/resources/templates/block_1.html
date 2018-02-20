@@ -1,5 +1,5 @@
 <section class="imgCont">
-	<img src="http://via.placeholder.com/400x400" class="bgTop" />
+	<img src="" class="bgTop" />
 	<!-- CAMBIA QUANDO VI E' L'IMMAGINE DA API -->
 	
 	<div class="onImg">
@@ -9,6 +9,6 @@
 		<p th:text="${infoWeather.name}" class="town" />
 		<p th:text="${infoWeather.weather[0].main}" class="meteo" />
 		<p th:text="${infoWeather.dt}" class="date" />
-		<p th:text="${infoWeather.main.temp}" class="gradi" />
+		<p class="gradi"><span th:text="${infoWeather.main.temp}" />°</p>
 	</div>
 </section>
