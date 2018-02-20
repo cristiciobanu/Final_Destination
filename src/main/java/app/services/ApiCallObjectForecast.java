@@ -4,11 +4,11 @@ import org.springframework.web.client.RestTemplate;
 
 import app.models.Forecast;
 
-public class ApiCallObjectWForecast {
+public class ApiCallObjectForecast {
 	private String url;
 	private Forecast result;
 	
-	public ApiCallObjectWForecast(String url) {
+	public ApiCallObjectForecast(String url) {
 		setUrl(url);
 		RestTemplate restTemplate = new RestTemplate();
 		setResult(restTemplate.getForObject(getUrl(), Forecast.class));
