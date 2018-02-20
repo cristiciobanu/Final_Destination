@@ -1,0 +1,45 @@
+img {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  margin: 1px;
+}
+
+.imgCont {
+    position: relative;
+    text-align: center;
+    color: white;
+    line-height: 15vw;
+}
+
+.town {
+      font-size: 10vw;
+}
+
+.meteo,.date {
+      font-size: 8vw;
+}
+
+.gradi, #meteo {
+      font-size: 15vw;
+}
+
+.onImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.meteoNext5 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input {
+  position: fixed;
+  bottom: 0px;
+  height: 3vh;
+  width: 100vw;
+  border: 1px solid gray;
+  color: grey;
+}
