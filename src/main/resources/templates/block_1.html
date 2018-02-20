@@ -1,14 +1,9 @@
 <section class="imgCont">
-	<img src="http://via.placeholder.com/400x400" class="bgTop" />
-	<!-- CAMBIA QUANDO VI E' L'IMMAGINE DA API -->
-	
+	<img src="http://via.placeholder.com/400x400" />	<!-- CAMBIA QUANDO VI E' L'IMMAGINE DA API -->
 	<div class="onImg">
-		<img
-			th:attr="src=@{'http://openweathermap.org/img/w/' + ${infoWeather.weather[0].icon} + '.png'}"
-			class="iconM" />
-		<p th:text="${infoWeather.name}" class="town" />
-		<p th:text="${infoWeather.weather[0].main}" class="meteo" />
-		<p th:text="${infoWeather.dt}" class="date" />
-		<p th:text="${infoWeather.main.temp}" class="gradi" />
-	</div>
+		<span class="iconM">*ICON*</span><br />
+		<span class="town">BOLOGNA</span><br />
+		<span class="meteo">sereno</span><br />
+		<span class="date">DATE</span><br />
+		<span class="gradi">GRADI</span></div>
 </section>

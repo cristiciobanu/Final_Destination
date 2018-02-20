@@ -18,8 +18,9 @@ public class City_ImageController {
     		@RequestParam(value="city", required = false, defaultValue="bologna") String city) {
     	
     	UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getTeleportHost())
-			      .path(GlobalProperties.getTeleportPathStart()).path(city).path(GlobalProperties.getTeleportPathEnd()).build();
+			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
+			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
+			      .queryParam("q", city).build();
     	
     	ApiCallObject y = new ApiCallObject(urlWeather.toString());
     	
