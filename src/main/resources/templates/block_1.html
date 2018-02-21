@@ -1,17 +1,15 @@
 <section class="imgCont">
 	<img src="" class="townIMG" />
-	<!-- CAMBIA QUANDO VI E' L'IMMAGINE DA API -->
 	
 	<div class="onImg">
-		<p th:text="${infoWeather.weather[0].icon}" class="towName" />		
+		<i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i>
 			
-			<!-- 	<i class="fas fa-sun"></i>		| SUN
-					<i class="fal fa-cloud"></i>	| NUVOLOSO
-					<i class="fal fa-tint"></i>		| PIOGGIA
+			<!-- <i class="fas fa-sun"></i>		| SUN
+					<i class="fas fa-cloud"></i>	| NUVOLOSO
+					<i class="fas fa-tint"></i>		| PIOGGIA
 					<i class="fas fa-bolt"></i>		| FULMINI
-					<i class="fal fa-snowflake"></i>| SNOW
-					<i class="fas fa-cloud"></i>	| NEBBIA
-			 -->
+					<i class="fas fa-snowflake"></i>| SNOW
+					<i class="fas fa-cloud"></i>	| NEBBIA -->
 			 
 		<p th:text="${infoWeather.name}" class="towName" />
 		<p th:text="${infoWeather.weather[0].main}" class="meteoName" />		
