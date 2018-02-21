@@ -1,4 +1,4 @@
-.bgTop {
+.townIMG {
   width: 100%;
   height: 90%; }
 
@@ -8,23 +8,25 @@
   color: white;
   line-height: 11vw; }
 
-.town {
-  font-size: 10vw; }
-
-.meteo, .date {
-  font-size: 8vw; }
-
-.gradi {
-  font-size: 15vw; }
-
-.iconM {
-  width: 30vw; }
-
 .onImg {
   position: absolute;
-  top: 40%;
+  top: calc(44% + 5px);
   left: 50%;
-  transform: translate(-50%, -50%); }
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+
+.towName {
+  font-size: 10vw; }
+
+.meteoName, .data {
+  font-size: 8vw; }
+
+.gradi, .iconT {
+  font-size: 15vw; }
 
 body {
   width: 95%;

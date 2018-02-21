@@ -9,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import app.services.ApiCallObject;
 import app.services.ApiCallObjects;
 import app.utils.GlobalProperties;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class Weather_StationController {
@@ -24,6 +25,12 @@ public class Weather_StationController {
 		  ApiCallObject y = new ApiCallObject(urlWeather.toString());
 	      model.addAttribute("infoWeather", y.getResult());
 	      
+	      //data corrente TOP: da sistema
+	       long unixSeconds = System.currentTimeMillis();
+		   SimpleDateFormat sdf = new SimpleDateFormat("d MMMM");
+		   String date = sdf.format(unixSeconds);
+		   model.addAttribute("dataCONV", date);
+		   
 	      return "weather_station";
 	  }
 }

@@ -1,8 +1,5 @@
-$fullWidth: 100%;
-// TOP IMG \\
-
-.bgTop {
-  width: $fullWidth;
+.townIMG {
+  width: 100%;
   height: 90%;
 }
 
@@ -13,25 +10,26 @@ $fullWidth: 100%;
     line-height: 11vw;
 }
 
-.town {
+.onImg {
+    position: absolute;
+    top: calc(44% + 5px);
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.towName {
       font-size: 10vw;
 }
 
-.meteo,.date {
+.meteoName,.data {
       font-size: 8vw;
 }
 
-.gradi {
+.gradi, .iconT {
       font-size: 15vw;
-}
-
-.iconM {
-  width: 30vw;
-}
-
-.onImg {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

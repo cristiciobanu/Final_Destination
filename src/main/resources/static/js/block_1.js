@@ -4,5 +4,5 @@ $.ajax({
         dataType: 'json',
         cache: false,
         success: function(data) {
-            $('.bgTop').attr('src',data.photos[0].image.mobile)}
+            $('.townIMG').attr('src',data.photos[0].image.mobile)}
         });

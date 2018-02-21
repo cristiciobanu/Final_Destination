@@ -1,14 +1,21 @@
 <section class="imgCont">
-	<img src="" class="bgTop" />
+	<img src="" class="townIMG" />
 	<!-- CAMBIA QUANDO VI E' L'IMMAGINE DA API -->
 	
 	<div class="onImg">
-		<img
-			th:attr="src=@{'http://openweathermap.org/img/w/' + ${infoWeather.weather[0].icon} + '.png'}"
-			class="iconM" />
-		<p th:text="${infoWeather.name}" class="town" />
-		<p th:text="${infoWeather.weather[0].main}" class="meteo" />
-		<p th:text="${infoWeather.dt}" class="date" />
-		<p class="gradi"><span th:text="${infoWeather.main.temp}" />°</p>
+		<p th:text="${infoWeather.weather[0].icon}" class="towName" />		
+			
+			<!-- 	<i class="fas fa-sun"></i>		| SUN
+					<i class="fal fa-cloud"></i>	| NUVOLOSO
+					<i class="fal fa-tint"></i>		| PIOGGIA
+					<i class="fas fa-bolt"></i>		| FULMINI
+					<i class="fal fa-snowflake"></i>| SNOW
+					<i class="fas fa-cloud"></i>	| NEBBIA
+			 -->
+			 
+		<p th:text="${infoWeather.name}" class="towName" />
+		<p th:text="${infoWeather.weather[0].main}" class="meteoName" />		
+		<p th:text="${dataCONV}" class="data" />		
+		<p class="gradi"><span th:text="${infoWeather.main.temp}" />°</p>		
 	</div>
 </section>
