@@ -20,7 +20,7 @@ var searchCity = (function () {
       function(response) {
 				$wrapper.find('.lista').empty();
 				response._embedded["city:search-results"].forEach(function(element){
-					$lista.append("<li class='element' data-id='"+element._links["city:item"].href+"'>"+element.matching_full_name+"</li>");;
+					$lista.append("<li data-id='"+element._links["city:item"].href+"'><a>"+element.matching_full_name+"</a></li>");;
 				 });
       },
       function(error) {

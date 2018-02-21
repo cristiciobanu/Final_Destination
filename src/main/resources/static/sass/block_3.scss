@@ -19,6 +19,9 @@
 			padding: 5px;
 			text-decoration: none;
 			color: grey;
+			display: flex;
+			min-height: 50px;
+			align-items: center;
 
 			&:hover{
 				color: #484747;

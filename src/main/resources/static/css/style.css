@@ -14,7 +14,10 @@
       margin: 2px;
       padding: 5px;
       text-decoration: none;
-      color: grey; }
+      color: grey;
+      display: flex;
+      min-height: 50px;
+      align-items: center; }
       .search .lista li:hover {
         color: #484747;
         font-weight: bold; }
