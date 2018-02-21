@@ -8,20 +8,15 @@ var speechInput = (function () {
 	var recognition;
 	var speechRecognitionList;
 
-	var bg;
-	var hints;
-
-	var colorHTML;
 	var $input;
 	var $text;
 
+	var CLICK;
   /* CACHING VARIABLES */
   function _setup() {
+		CLICK = false;
 		recognition = new SpeechRecognition();
 		speechRecognitionList = new SpeechGrammarList();
-		bg = document.querySelector('html');
-		hints = document.querySelector('.hints');
-		colorHTML= '';
 		//recognition.continuous = false;
 		recognition.lang = 'it';
 		recognition.interimResults = false;
@@ -44,6 +39,7 @@ var speechInput = (function () {
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
 		$input.on('click',function() {
+			alert("pulsante");
 		  recognition.start();
 		  console.log('Ready to receive a color command.');
 		});

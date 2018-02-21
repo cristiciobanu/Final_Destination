@@ -79,7 +79,7 @@ var searchCity = (function () {
 			}
 		);
 		BOOLEAN = false;
-		$('/.form').submit();
+		$('.form').submit();
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
