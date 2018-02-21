@@ -18,7 +18,7 @@ import app.utils.GlobalProperties;
 @RestController
 public class Weather_JsonController {
 	
-	@RequestMapping("/mediaGiorni")
+	@RequestMapping("/greeting")
     public Object greeting(
     		@RequestParam(value="city", required = false, defaultValue="bologna") String city) throws Exception {
     	
@@ -32,15 +32,14 @@ public class Weather_JsonController {
     	Management m = new Management();
     	
     	Lista[] l = y.getResult().getList();
-    	
-    	String s = "";
+
     	
     	for (int i = 0; i < l.length; i++) {
     		Lista li = l[i];
-			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp());	
+			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp(),li.getMain().getTemp_max(),li.getMain().getTemp_min());	
 		}
     	
-        return m.toString();
+        return m.jsonTemperature();
     }
 	
 
