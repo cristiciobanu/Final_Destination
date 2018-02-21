@@ -37,7 +37,7 @@ public class Weather_JsonController {
 			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp());
 		}
     	
-        return y.getResult().getList()[0].getDt_txt();
+        return m.toString();
     }
 	
 //	@RequestMapping("/mediaTemperature")

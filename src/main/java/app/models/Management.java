@@ -55,5 +55,14 @@ public class Management {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		String s = "";
+		for (String key : medie.keySet()) {
+			s+=key+" TEMPERATURA "+medie.get(key)+"K\n";
+		}
+		return s;
+	}
 
 }
