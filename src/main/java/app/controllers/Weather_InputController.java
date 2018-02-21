@@ -29,14 +29,9 @@ public class Weather_InputController {
 	
 	@RequestMapping("/getId")
     public Object getId(
-    		@RequestParam(value="city", required = false) String city) {
+    		@RequestParam(value="url", required = false) String url) {
     	
-    	UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", city).build();
-    	
-    	ApiCallObject y = new ApiCallObject(urlWeather.toString());
+    	ApiCallObject y = new ApiCallObject(url);
     	
         return y.getResult();
     }

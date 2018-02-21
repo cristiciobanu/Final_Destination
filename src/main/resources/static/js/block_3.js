@@ -4,13 +4,11 @@ var searchCity = (function () {
 
   var $wrapper;
   var $lista;
-	var $a;
 	var BOOLEAN;
   /* CACHING VARIABLES */
   function _setup() {
     $wrapper = $('.search');
     $lista = $('.lista');
-		$a = $('UL');
 		BOOLEAN = true;
   };
 
@@ -71,8 +69,10 @@ var searchCity = (function () {
 	};
 
 	var refresh = function($this){
-		getData($this.find('LI').data('id')).then(
+		debugger;
+		getData("/getId?url="+$this.data('id')).then(
 			function(response) {
+				debugger;
 				$('.form input[type=hidden]').val(response.geoname_id);
 				console.log(response.geoname_id);
 			},
@@ -97,7 +97,7 @@ var searchCity = (function () {
 			check($(this).val());
 		});
 
-		$a.on('click','a', function(){
+		$lista.on('click','li', function(){
 			var $this = $(this);
 			refresh($this);
 		});
