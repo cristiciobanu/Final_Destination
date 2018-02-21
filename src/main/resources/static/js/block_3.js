@@ -61,9 +61,7 @@ var searchCity = (function () {
     });
   };
 
-	var check = function(){
-		var $this = $(this);
-		var text =$this.val();
+	var check = function(text){
 			if(text.trim().length == 0){
 				$wrapper.find('.lista').empty();
 			}
@@ -72,10 +70,10 @@ var searchCity = (function () {
 			}
 	};
 
-	var refresh = function($this){+
+	var refresh = function($this){
 		getData($this.find('LI').data('id')).then(
 			function(response) {
-				$('input[type=hidden]').val(response.geoname_id);
+				$('.form input[type=hidden]').val(response.geoname_id);
 				console.log(response.geoname_id);
 			},
 			function(error) {
@@ -89,14 +87,16 @@ var searchCity = (function () {
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-		$(document).ready(function() {
-  		$('form').on('submit', function(e){
-    			if(BOOLEAN === true){
-      			e.preventDefault();
-					}
-  		});
+		$('.form').on('submit', function(e){
+  			if(BOOLEAN === true){
+    			e.preventDefault();
+				}
 		});
-    $wrapper.on('keyup','input',check);
+
+    $wrapper.on('keyup','input',function(){
+			check($(this).val());
+		});
+
 		$a.on('click','a', function(){
 			var $this = $(this);
 			refresh($this);
@@ -115,7 +115,8 @@ var searchCity = (function () {
   }
 
   return {
-    start: _init
+    start: _init,
+		check: check
   };
 
 })();

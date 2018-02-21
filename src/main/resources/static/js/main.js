@@ -1,1 +1,2 @@
 searchCity.start();
+speechInput.start();
