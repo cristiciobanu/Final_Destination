@@ -7,6 +7,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import app.services.ApiCallObject;
+import app.services.ApiCallObjectId;
 import app.services.ApiCallObjects;
 import app.utils.GlobalProperties;
 
@@ -31,7 +32,7 @@ public class Weather_InputController {
     public Object getId(
     		@RequestParam(value="url", required = false) String url) {
     	
-    	ApiCallObject y = new ApiCallObject(url);
+    	ApiCallObjectId y = new ApiCallObjectId(url);
     	
         return y.getResult();
     }

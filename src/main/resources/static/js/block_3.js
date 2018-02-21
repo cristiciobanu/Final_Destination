@@ -69,10 +69,8 @@ var searchCity = (function () {
 	};
 
 	var refresh = function($this){
-		debugger;
 		getData("/getId?url="+$this.data('id')).then(
 			function(response) {
-				debugger;
 				$('.form input[type=hidden]').val(response.geoname_id);
 				console.log(response.geoname_id);
 			},
@@ -81,7 +79,7 @@ var searchCity = (function () {
 			}
 		);
 		BOOLEAN = false;
-		$('.form').submit();
+		$('/.form').submit();
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
