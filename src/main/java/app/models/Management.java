@@ -4,12 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Management {
 	
 	private LinkedList<Temperature>temperature;
-	public static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("YYYY-MM-dd kk:mm:ss");
+	public static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private HashMap<String, Double> medie;
 	private LinkedList<String> date;
 	
@@ -18,13 +19,17 @@ public class Management {
 	}
 	
 	public void addGiorniTemperature(String s, double d) throws Exception {
-		Date date = DATEFORMAT.parse(s);
-		temperature.add(new Temperature(date, d));
+		Date da = DATEFORMAT.parse(s);
+		Temperature t = new Temperature(da, d); 
+		temperature.add(t);
+		if (!date.contains(t.getD())) date.add(t.getD());
 	}
 	
 	
 	private void clear() {
+		date = new LinkedList<>();
 		temperature = new LinkedList();
+		medie = new HashMap<>();
 	}
 	
 	private void mediaGiorni () {
@@ -56,12 +61,18 @@ public class Management {
 		}
 	}
 	
+	public Temperature getTemperatura(int index) {
+		return temperature.get(index);
+	}
+	
 	@Override
 	public String toString() {
-		String s = "";
-		for (String key : medie.keySet()) {
-			s+=key+" TEMPERATURA "+medie.get(key)+"K\n";
+		String s= "";
+		mediaGiorni();
+		for (int i = 0; i < date.size(); i++) {
+			s+= date.get(i)+" "+medie.get(date.get(i))+"\n";
 		}
+		
 		return s;
 	}
 
