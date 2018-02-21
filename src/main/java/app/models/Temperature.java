@@ -90,7 +90,7 @@ public class Temperature {
 			break;
 		}
 		
-		this.d = d.getDate()+"-"+ mese;
+		this.d = d.getDate()+" "+ mese;
 	}
 	
 	public double getTemperatura() {

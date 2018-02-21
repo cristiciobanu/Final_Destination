@@ -52,6 +52,7 @@ public class Management {
 		for (int i = 0; i < temperature.size(); i++) {
 			String data = temperature.get(i).getD();
 			if (!date.contains(data)) {
+				data.replaceAll("-", " ");
 				date.add(data);
 			}
 		}

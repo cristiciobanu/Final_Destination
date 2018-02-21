@@ -1,0 +1,1 @@
+moduloPrevisioni.start();
