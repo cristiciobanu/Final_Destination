@@ -2,15 +2,8 @@
 	<img src="" class="townIMG" />
 	
 	<div class="onImg">
-		<i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i>
-			
-			<!-- <i class="fas fa-sun"></i>		| SUN
-					<i class="fas fa-cloud"></i>	| NUVOLOSO
-					<i class="fas fa-tint"></i>		| PIOGGIA
-					<i class="fas fa-bolt"></i>		| FULMINI
-					<i class="fas fa-snowflake"></i>| SNOW
-					<i class="fas fa-cloud"></i>	| NEBBIA -->
-			 
+		<div class="icon"><i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i></div>
+					 
 		<p th:text="${infoWeather.name}" class="towName" />
 		<p th:text="${infoWeather.weather[0].main}" class="meteoName" />		
 		<p th:text="${dataCONV}" class="data" />		
