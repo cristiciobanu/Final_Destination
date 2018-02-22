@@ -76,13 +76,13 @@ var searchCity = (function () {
 		getData("/getId?url="+$this.data('id')).then(
 			function(response) {
 				$hiddenInput.val(response.geoname_id);
+				BOOLEAN = false;
+				$form.submit();
 			},
 			function(error) {
 				console.error("Failed!", error);
 			}
 		);
-		BOOLEAN = false;
-		$form.submit();
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
