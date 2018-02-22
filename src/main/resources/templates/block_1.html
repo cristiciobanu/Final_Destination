@@ -1,0 +1,11 @@
+<section class="showcase-temp">
+	<img src="/img/white.png" class="city-img" />
+	<div class="data">
+		<i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i>
+		<p th:text="${infoWeather.name}" class="nome-citta" />
+		<p th:text="${infoWeather.weather[0].description}" class="condizione" />
+		<p th:text="${oggi}"/>
+		<p th:text="${infoWeather.main.temp} + '°'" />
+	</div>
+	<div class="overlay"></div>
+</section>

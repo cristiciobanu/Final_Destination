@@ -3,27 +3,19 @@ package app.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import app.services.ApiCallObject;
-import app.services.ApiCallObjects;
-import app.utils.GlobalProperties;
+import app.utils.urlBuilderX;
 
 @RestController
 public class City_ImageController {
 	
-	@RequestMapping("/qwe")
-    public Object greeting(
-    		@RequestParam(value="city", required = false, defaultValue="bologna") String city) {
-    	
-    	UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", city).build();
-    	
-    	ApiCallObject y = new ApiCallObject(urlWeather.toString());
-    	
-        return y.getResult();
-    }
+	@RequestMapping("/get_image_city")
+	public Object get_image_city(
+			@RequestParam(value="city", required = false) String city) {
+		
+		ApiCallObject y = new ApiCallObject(urlBuilderX.buildImageUrl(city));
+		
+	    return y.getResult();
+	}
 }

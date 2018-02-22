@@ -1,0 +1,125 @@
+/******************************
+      ICONS
+******************************/
+.icon_01d:after,
+.icon_01n:after {
+  content: "\f185"; }
+
+.icon_02d:after,
+.icon_02n:after,
+.icon_03d:after,
+.icon_03n:after,
+.icon_04d:after,
+.icon_04n:after {
+  content: "\f0c2"; }
+
+.icon_09d:after,
+.icon_09n:after,
+.icon_10d:after,
+.icon_10n:after {
+  content: "\f043"; }
+
+.icon_11d:after,
+.icon_11n:after {
+  content: "\f0e7"; }
+
+.icon_13d:after,
+.icon_13n:after {
+  content: "\f2dc"; }
+
+.icon_50d:after,
+.icon_50n:after {
+  content: "\f0c9"; }
+
+.data {
+  width: 100%;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  text-align: center;
+  padding: 15px 0; }
+  .data .city-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -10; }
+  .data .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -5; }
+  .data i {
+    margin: 15px 0;
+    font-size: 40px; }
+  .data p {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-transform: capitalize; }
+
+.search {
+  width: 95%;
+  margin: 0 auto;
+  bottom: 0;
+  text-align: center;
+  position: fixed; }
+  .search .lista {
+    background-color: #fafafa;
+    position: absolute;
+    bottom: 100%;
+    width: 95%; }
+    .search .lista li {
+      text-align: left;
+      border: 1px solid lightgrey;
+      border-radius: 10px;
+      margin: 2px;
+      padding: 5px;
+      text-decoration: none;
+      color: grey;
+      display: flex;
+      min-height: 50px;
+      align-items: center; }
+      .search .lista li:hover {
+        color: #484747;
+        font-weight: bold; }
+
+.searchInput {
+  display: flex;
+  width: 100%;
+  height: 50px; }
+  .searchInput input {
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 100%;
+    line-height: inherit;
+    font-family: inherit; }
+  .searchInput i {
+    width: 10%;
+    text-align: center;
+    align-items: center;
+    line-height: 26.5px;
+    color: darkgrey;
+    font-size: 35px; }
+    .searchInput i:before {
+      width: 100%;
+      height: 100%;
+      line-height: 51px; }
+
+/******************************
+      BODY
+******************************/
+body {
+  margin: 0 auto; }
+
+@media (min-width: 768px) {
+  body {
+    width: 90%; } }
+@media (min-width: 1080px) {
+  body {
+    width: 80%; } }
+
+/*# sourceMappingURL=style.css.map */
