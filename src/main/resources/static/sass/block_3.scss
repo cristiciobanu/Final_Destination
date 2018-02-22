@@ -4,14 +4,13 @@
 	bottom: 0;
 	text-align: center;
 	position: fixed;
-
+	z-index: 20;
 
 	.lista {
 		background-color: #fafafa;
 		position: absolute;
 		bottom: 100%;
 		width: 95%;
-		// border: 1px solid lightgrey;
 
 		li{
 			text-align: left;
