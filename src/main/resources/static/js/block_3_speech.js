@@ -12,8 +12,8 @@ var speechInput = (function () {
 		recognition.lang = 'it';
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
-		$speechIcon = $('.icon');
-		$text = $('.input');
+		$speechIcon = $('FORM .searchInput I');
+		$text = $('FORM .searchInput INPUT');
   }
 
   /* PRIVATE BUSINESS FUNCTIONS */
@@ -22,13 +22,11 @@ var speechInput = (function () {
 		recognition.start();
 		$speechIcon.css('color', 'red');
 		document.getElementById("myText").placeholder = "In ascolto...";
-		console.log('Ready to receive a color command.');
 	};
 
 	var speechResult = function(e){
 		var last = e.results.length - 1;
 		var word = e.results[last][0].transcript;
-		console.log('Result received: ' + word);
 		$text.val(word);
 		searchCity.check($text.val());
 	};
@@ -42,7 +40,6 @@ var speechInput = (function () {
 	var speechError = function(e){
 		$speechIcon.css('color', 'darkgrey');
 		document.getElementById("myText").placeholder = "Insert your city HERE!";
-		console.log('Error occurred in recognition: ' + e.error);
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 

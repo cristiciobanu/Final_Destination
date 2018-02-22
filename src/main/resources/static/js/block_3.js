@@ -1,14 +1,18 @@
 var searchCity = (function () {
 
   /* DECLARING VARIABLES */
-
-  var $wrapper;
+	var $wrapper;
   var $lista;
+	var $hiddenInput;
+	var $form;
 	var BOOLEAN;
-  /* CACHING VARIABLES */
+
+	/* CACHING VARIABLES */
   function _setup() {
     $wrapper = $('.search');
     $lista = $('.lista');
+		$hiddenInput = $('.search FORM input[type=hidden]');
+		$form =  $('.search FORM');
 		BOOLEAN = true;
   };
 
@@ -19,7 +23,7 @@ var searchCity = (function () {
 				$wrapper.find('.lista').empty();
 				response._embedded["city:search-results"].forEach(function(element){
 					$lista.append("<li data-id='"+element._links["city:item"].href+"'><a>"+element.matching_full_name+"</a></li>");;
-				 });
+				});
       },
       function(error) {
         console.error("Failed!", error);
@@ -59,33 +63,32 @@ var searchCity = (function () {
     });
   };
 
-	var check = function(text){
-			if(text.trim().length == 0){
-				$wrapper.find('.lista').empty();
-			}
-			else{
-				getCity(text);
-			}
+	const check = function(text){
+		if(text.trim().length == 0){
+			$wrapper.find('.lista').empty();
+		}
+		else{
+			getCity(text);
+		}
 	};
 
-	var refresh = function($this){
+	const refresh = function($this){
 		getData("/getId?url="+$this.data('id')).then(
 			function(response) {
-				$('.form input[type=hidden]').val(response.geoname_id);
-				console.log(response.geoname_id);
+				$hiddenInput.val(response.geoname_id);
 			},
 			function(error) {
 				console.error("Failed!", error);
 			}
 		);
 		BOOLEAN = false;
-		$('.form').submit();
+		$form.submit();
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-		$('.form').on('submit', function(e){
+		$form.on('submit', function(e){
   			if(BOOLEAN === true){
     			e.preventDefault();
 				}
@@ -113,8 +116,7 @@ var searchCity = (function () {
   }
 
   return {
-    start: _init,
-		check: check
+    start: _init
   };
 
 })();

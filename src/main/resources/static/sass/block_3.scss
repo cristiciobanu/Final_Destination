@@ -31,32 +31,26 @@
 			}
 		}
 	}
+}
 
-	.form{
-		ul{
-			display: flex;
-			width: 100%;
+.searchInput{
+	display: flex;
+	width: 100%;
 
-			.inputc{
-				width: 95%;
+	input{
+		width: 95%;
+		text-align: center;
+		border-radius: 10px;
+		font-size: 100%;
+		line-height: inherit;
+		font-family: inherit;
+	}
 
-				.input{
-					text-align: center;
-					border-radius: 10px;
-					width: 100%;
-					font-size: 100%;
-					line-height: inherit;
-					font-family: inherit;
-				}
-			}
-
-			.icon{
-				width: 5%;
-				text-align: center;
-				align-items: center;
-				line-height:26.5px;
-				color: darkgrey;
-			}
-		}
+	i{
+		width: 5%;
+		text-align: center;
+		align-items: center;
+		line-height:26.5px;
+		color: darkgrey;
 	}
 }

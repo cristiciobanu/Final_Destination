@@ -3,34 +3,24 @@ package app.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import app.services.ApiCallObject;
 import app.services.ApiCallObjectId;
-import app.services.ApiCallObjects;
-import app.utils.GlobalProperties;
+import app.utils.urlBuilderX;
 
 @RestController
 public class Weather_InputController {
 	
 	@RequestMapping("/searchCity")
-    public Object searchCity(
-    		@RequestParam(value="search", required = false) String city)
-    		{
+    public Object searchCity( @RequestParam(value="search", required = false) String city ) {
     	
-    	UriComponents urlcity = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getTeleportHost())
-			      .path(GlobalProperties.getTeleportPathCities()).queryParam("search", city).queryParam("limit", 10).build();
-    	
-    	ApiCallObject y = new ApiCallObject(urlcity.toString());
+    	ApiCallObject y = new ApiCallObject(urlBuilderX.buildSearchCityUrl(city).toString());
     	
         return y.getResult();
     }
 	
 	@RequestMapping("/getId")
-    public Object getId(
-    		@RequestParam(value="url", required = false) String url) {
+    public Object getId( @RequestParam(value="url", required = false) String url) {
     	
     	ApiCallObjectId y = new ApiCallObjectId(url);
     	

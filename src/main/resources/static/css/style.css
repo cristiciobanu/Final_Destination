@@ -23,24 +23,23 @@
       .search .lista li:hover {
         color: #484747;
         font-weight: bold; }
-  .search .form ul {
-    display: flex;
-    width: 100%; }
-    .search .form ul .inputc {
-      width: 95%; }
-      .search .form ul .inputc .input {
-        text-align: center;
-        border-radius: 10px;
-        width: 100%;
-        font-size: 100%;
-        line-height: inherit;
-        font-family: inherit; }
-    .search .form ul .icon {
-      width: 5%;
-      text-align: center;
-      align-items: center;
-      line-height: 26.5px;
-      color: darkgrey; }
+
+.searchInput {
+  display: flex;
+  width: 100%; }
+  .searchInput input {
+    width: 95%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 100%;
+    line-height: inherit;
+    font-family: inherit; }
+  .searchInput i {
+    width: 5%;
+    text-align: center;
+    align-items: center;
+    line-height: 26.5px;
+    color: darkgrey; }
 
 body {
   width: 95%;
