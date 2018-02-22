@@ -8,7 +8,4 @@ build
 .sass-cache
 node_modules
 style.css.map
-<<<<<<< HEAD
-=======
 style.css
->>>>>>> c805f9516162e3130be6424e22ad9a7d2e372513
