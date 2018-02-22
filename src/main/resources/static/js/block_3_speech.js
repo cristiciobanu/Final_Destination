@@ -48,13 +48,17 @@ var speechInput = (function () {
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-		$speechIcon.on('click',function(){
+		$speechIcon.on('touchstart click',function(){
 			speechStart();
 		});
 
 		recognition.onresult = function(event) {
 			speechResult(event);
 		};
+
+		$speechIcon.on('touchend', function() {
+			speechEnd();
+		});
 
 		recognition.onspeechend = function() {
 			speechEnd();

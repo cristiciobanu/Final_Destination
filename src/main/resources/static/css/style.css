@@ -1,7 +1,9 @@
 .search {
-  margin-top: 100vh;
+  width: 95%;
+  margin: 0 auto;
+  bottom: 0;
   text-align: center;
-  position: relative; }
+  position: fixed; }
   .search .lista {
     background-color: #fafafa;
     position: absolute;

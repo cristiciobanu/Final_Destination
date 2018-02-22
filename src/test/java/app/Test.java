@@ -23,8 +23,15 @@ public class Test {
 
 	
 	@org.junit.Test
-	public void test() throws Exception {
+	public void testCity() throws Exception {
 		mockMvc.perform(get("/searchCity").param("search", "bologna"))
 				.andExpect(content().string(containsString("Bologna")));
 	}
+	
+	@org.junit.Test
+	public void testId() throws Exception {
+		mockMvc.perform(get("/getId").param("url", "https://api.teleport.org/api/cities/geonameid:3181928/"))
+				.andExpect(content().string(containsString("3181928")));
+	}
+	
 }
