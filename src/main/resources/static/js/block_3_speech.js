@@ -21,7 +21,7 @@ var speechInput = (function () {
 	var speechStart = function(){
 		recognition.start();
 		$speechIcon.css('color', 'red');
-		document.getElementById("myText").placeholder = "In ascolto...";
+		$text.val("In ascolto...");
 	};
 
 	var speechResult = function(e){
@@ -34,18 +34,22 @@ var speechInput = (function () {
 	var speechEnd = function(){
 		recognition.stop();
 		$speechIcon.css('color', 'darkgrey');
-		document.getElementById("myText").placeholder = "Insert your city HERE!";
+		$text.val("Insert your city HERE!");
 	};
 
 	var speechError = function(e){
 		$speechIcon.css('color', 'darkgrey');
-		document.getElementById("myText").placeholder = "Insert your city HERE!";
+		$text.val("Insert your city HERE!");
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-		$speechIcon.on('touchstart click',function(){
+		$speechIcon.on('click',function(){
+			speechStart();
+		});
+
+		$speechIcon.on('touchstart',function(){
 			speechStart();
 		});
 
