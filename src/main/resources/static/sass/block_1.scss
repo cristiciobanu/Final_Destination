@@ -1,76 +1,37 @@
-/* IMMAGINE */
-.imgCont {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
-.townIMG {
-  width: 100%;
-  height: 100vw;
-}
-
-.onImg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 110%;
-    transform: translate(-50%, -55%);
-    background: rgba(0,0,0,0.3);
-}
-
-/* TITOLI SPECIFICI */
-.icon {
-  margin-top: 20%;
-  margin-bottom: 5%;
-}
-.towName {
-      font-size: 15vw;
-      margin-bottom: 10%;
-}
-
-.meteoName,.data {
-      font-size: 7.3vw;
-}
-
 .data {
-  margin-top: 3%;
-  margin-bottom: 15%;
-}
+	width: 100%;
+	position: relative;
+	color: white;
+	overflow: hidden;
+	text-align: center;
+	padding: 15px 0;
 
-.gradi, .iconT {
-      font-size: 15vw;
-}
+	.city-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+	  width: 100%;
+		z-index: -10;
+	}
 
-//ICONE\\
-i {
-    font-size: 15vw;
-}
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.2);
+		z-index: -5;
+	}
 
-.icon_01d::after, .icon_01n::after {
-  content: "\f185";
-}
+	i {
+		margin: 15px 0;
+		font-size: 40px;
+	}
 
-.icon_02d::after, .icon_02n::after,
-.icon_03d::after, .icon_03n::after,
-.icon_04d::after, .icon_04n::after {
-  content: "\f0c2";
-}
-
-.icon_09d::after, .icon_09n::after,
-.icon_10d::after, .icon_10n::after {
-  content: "\f043";
-}
-
-.icon_11d::after, .icon_11n::after {
-  content: "\f0e7";
-}
-
-.icon_13d::after, .icon_13n::after {
-  content: "\f2dc";
-}
-
-.icon_50d::after, .icon_50n::after {
-  content: "\f0c9";
+	p {
+		font-size: 24px;
+		margin-bottom: 15px;
+		text-transform: capitalize;
+	}
 }

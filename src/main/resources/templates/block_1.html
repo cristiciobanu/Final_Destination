@@ -1,12 +1,11 @@
-<section class="imgCont">
-	<img src="" class="townIMG" />
-	
-	<div class="onImg">
-		<div class="icon"><i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i></div>
-					 
-		<p th:text="${infoWeather.name}" class="towName" />
-		<p th:text="${infoWeather.weather[0].main}" class="meteoName" />		
-		<p th:text="${dataCONV}" class="data" />		
-		<p class="gradi"><span th:text="${infoWeather.main.temp}" />°</p>		
+<section class="showcase-temp">
+	<div class="data">
+		<i th:attr="class=@{'fas icon_' + ${infoWeather.weather[0].icon}}"></i>
+		<p th:text="${infoWeather.name}" class="nome-citta" />
+		<p th:text="${infoWeather.weather[0].description}" class="condizione" />
+		<p th:text="${oggi}"/>
+		<p th:text="${infoWeather.main.temp} + '°'" />
+		<img src="" class="city-img" />
+		<div class="overlay"></div>
 	</div>
 </section>

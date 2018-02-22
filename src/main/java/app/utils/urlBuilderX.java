@@ -9,7 +9,7 @@ public class urlBuilderX {
 		  UriComponents url = UriComponentsBuilder.newInstance()
 			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
 			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", id).queryParam("units", "metric").build();
+			      .queryParam("id", id).queryParam("units", "metric").queryParam("lang", "it").build();
 		  return url.toString();
 	  }
 	  

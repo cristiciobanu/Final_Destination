@@ -10,9 +10,9 @@ import app.utils.urlBuilderX;
 @RestController
 public class City_ImageController {
 	
-	@RequestMapping("/qwe")
-	public Object greeting(
-			@RequestParam(value="city", required = false, defaultValue="bologna") String city) {
+	@RequestMapping("/get_image_city")
+	public Object get_image_city(
+			@RequestParam(value="city", required = false) String city) {
 		
 		ApiCallObject y = new ApiCallObject(urlBuilderX.buildImageUrl(city));
 		
