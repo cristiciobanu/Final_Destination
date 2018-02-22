@@ -3,33 +3,27 @@ package app.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import app.services.ApiCallObject;
-import app.services.ApiCallObjects;
-import app.utils.GlobalProperties;
+import app.utils.urlBuilderX;
 import java.text.SimpleDateFormat;
 
 @Controller
 public class Weather_StationController {
 	
 	  @RequestMapping("/weather_station")
-	  public String weather(Model model) {
+	  public String weather_station(
+			  @RequestParam(value="city", required=false, defaultValue="bologna") String city, Model model) {
 		  
-		  UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", "bologna").queryParam("units", "metric").build();
-		  
-		  ApiCallObject y = new ApiCallObject(urlWeather.toString());
+		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(city));
 	      model.addAttribute("infoWeather", y.getResult());
 	      
 	      //data corrente TOP: da sistema
-	       long unixSeconds = System.currentTimeMillis();
-		   SimpleDateFormat sdf = new SimpleDateFormat("d MMMM");
-		   String date = sdf.format(unixSeconds);
-		   model.addAttribute("dataCONV", date);
+	      long unixSeconds = System.currentTimeMillis();
+		  SimpleDateFormat sdf = new SimpleDateFormat("d MMMM");
+		  String date = sdf.format(unixSeconds);
+		  model.addAttribute("dataCONV", date);
 		   
 	      return "weather_station";
 	  }
