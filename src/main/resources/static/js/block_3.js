@@ -116,7 +116,8 @@ var searchCity = (function () {
   }
 
   return {
-    start: _init
+    start: _init,
+		check: check
   };
 
 })();
