@@ -21,7 +21,7 @@ var speechInput = (function () {
 	var speechStart = function(){
 		recognition.start();
 		$speechIcon.css('color', 'red');
-		$text.val("In ascolto...");
+		$text.attr("placeholder", "In ascolto...");
 	};
 
 	var speechResult = function(e){
@@ -34,12 +34,12 @@ var speechInput = (function () {
 	var speechEnd = function(){
 		recognition.stop();
 		$speechIcon.css('color', 'darkgrey');
-		$text.val("Insert your city HERE!");
+		$text.attr("placeholder", "Insert your city HERE!");
 	};
 
 	var speechError = function(e){
 		$speechIcon.css('color', 'darkgrey');
-		$text.val("Insert your city HERE!");
+		$text.attr("placeholder", "Insert your city HERE!");
 	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
