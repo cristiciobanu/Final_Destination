@@ -36,7 +36,8 @@ public class Weather_JsonController {
     	
     	for (int i = 0; i < l.length; i++) {
     		Lista li = l[i];
-			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp(),li.getMain().getTemp_max(),li.getMain().getTemp_min());	
+			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp(),li.getMain().getTemp_max(),li.getMain().getTemp_min());
+			m.addIcon(li.getWeather().getIcon(), li.getDt_txt());
 		}
     	
         return m.jsonTemperature();

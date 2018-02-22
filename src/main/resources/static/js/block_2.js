@@ -27,6 +27,7 @@ var moduloPrevisioni = (function () {
 		data.forEach (function (element) {
 			var min = Math.trunc(element.min);
 			var max = Math.trunc (element.max);
+
 			$(".previsioniSettimana").append("<article class='previsione'><p>  "+element.day+"<div>"+"</div>"+"</p><p class='minmax'>"+min+"°"+"</p><p class='minmax'>"+max+"°</p></article>");
 		});
 	}

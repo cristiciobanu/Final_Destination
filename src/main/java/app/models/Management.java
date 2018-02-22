@@ -2,22 +2,49 @@ package app.models;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Management {
+	public static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	private LinkedList<Temperature>temperature;
-	public static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//	private HashMap<String, Double> medie;
+	private LinkedList<Icon> icons;
+	private HashMap<String, String>iconCodes;
 	private LinkedList<String> date;
 	private HashMap<String, Double> massime;
 	private HashMap<String, Double> minime;
 	
+	
 	public Management() {
 		clear();
+	}
+	
+	public String maxTimesIcon(String day){
+		String str = "";
+		LinkedList<String>tmpCodes = new LinkedList<>();
+		
+		for (int i = 0; i < icons.size(); i++) {
+			Icon tmp = icons.get(i);
+			if (tmp.getDay().equals(day)&&!tmpCodes.contains(tmp.getCodIcon())) tmpCodes.add(tmp.getCodIcon());
+		}
+		
+		HashMap<Integer,String>times = new HashMap<>();
+		for (int i = 0; i < tmpCodes.size(); i++) {
+			times.put(Collections.frequency(tmpCodes,tmpCodes.get(i)),tmpCodes.get(i));
+		}
+		
+		int max = 0;
+		for (int temp : times.keySet()) {
+			max = Math.max(max, temp);
+		}
+		
+		return times.get(max);
 	}
 	
 	public void addGiorniTemperature(String s, double temp, double tempMax, double tempMin) throws Exception{
@@ -27,12 +54,19 @@ public class Management {
 		if (!date.contains(t.getD())) date.add(t.getD());
 	}
 	
+	public void addIcon (String codIcon, String day) throws Exception {
+		Date da = DATEFORMAT.parse(day);
+		Icon i = new Icon(codIcon, da);
+		icons.add(i);
+	}
+	
 	private void clear() {
 		date = new LinkedList<>();
 		temperature = new LinkedList();
-//		medie = new HashMap<>();
+		icons = new LinkedList<>();
 		minime = new HashMap<>();
 		massime = new HashMap<>();
+		iconCodes = new HashMap<>();
 	}
 	
 	private double media (String string) {
@@ -89,12 +123,12 @@ public class Management {
 		return temperature.get(index);
 	}
 	
-	
-	
 	private void init () {
 			for (int i = 0; i < date.size(); i++) {
-				massime.put(date.get(i), max_min_giorno(date.get(i),"max"));
-				minime.put(date.get(i), max_min_giorno(date.get(i),"min"));
+				String d = date.get(i);
+				massime.put(d, max_min_giorno(d,"max"));
+				minime.put(d, max_min_giorno(d,"min"));
+				iconCodes.put(d, maxTimesIcon(d));
 			}
 	}
 	
@@ -147,7 +181,7 @@ public class Management {
 		init();
 		for (int i = 0; i < temp.length; i++) {
 			String d = date.get(i);
-			temp[i] = new TemperatureJSON(d, massime.get(d), minime.get(d));
+			temp[i] = new TemperatureJSON(d, massime.get(d), minime.get(d),iconCodes.get(d));
 		}
 		return temp;
 	}
