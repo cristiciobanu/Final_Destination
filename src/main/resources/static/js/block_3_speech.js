@@ -2,76 +2,67 @@ var speechInput = (function () {
 
   /* DECLARING VARIABLES */
 	var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-	var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
-	var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
-
-	var recognition;
-	var speechRecognitionList;
-
-	var $input;
-	var $text;
-
+	var recognition, $speechIcon, $text;
 	var CLICK;
-  /* CACHING VARIABLES */
+
+	/* CACHING VARIABLES */
   function _setup() {
 		CLICK = false;
 		recognition = new SpeechRecognition();
-		speechRecognitionList = new SpeechGrammarList();
-		//recognition.continuous = false;
 		recognition.lang = 'it';
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
-		$input = $('.icon');
+		$speechIcon = $('.icon');
 		$text = $('.input');
-  };
+  }
 
   /* PRIVATE BUSINESS FUNCTIONS */
 
-	var _privateFunction = function() {
+	var speechStart = function(){
+		recognition.start();
+		$speechIcon.css('color', 'red');
+		document.getElementById("myText").placeholder = "In ascolto...";
+		console.log('Ready to receive a color command.');
+	};
 
-  };
+	var speechResult = function(e){
+		var last = e.results.length - 1;
+		var word = e.results[last][0].transcript;
+		console.log('Result received: ' + word);
+		$text.val(word);
+		searchCity.check($text.val());
+	};
 
-  var _privateFunctionBis = function() {
+	var speechEnd = function(){
+		recognition.stop();
+		$speechIcon.css('color', 'darkgrey');
+		document.getElementById("myText").placeholder = "Insert your city HERE!";
+	};
 
-  };
+	var speechError = function(e){
+		$speechIcon.css('color', 'darkgrey');
+		document.getElementById("myText").placeholder = "Insert your city HERE!";
+		console.log('Error occurred in recognition: ' + e.error);
+	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
-		$input.on('click',function() {
-			alert("pulsante");
-		  recognition.start();
-		  console.log('Ready to receive a color command.');
+		$speechIcon.on('click',function(){
+			speechStart();
 		});
 
 		recognition.onresult = function(event) {
-		  // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
-		  // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
-		  // It has a getter so it can be accessed like an array
-		  // The [last] returns the SpeechRecognitionResult at the last position.
-		  // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
-		  // These also have getters so they can be accessed like arrays.
-		  // The [0] returns the SpeechRecognitionAlternative at position 0.
-		  // We then return the transcript property of the SpeechRecognitionAlternative object
-
-		  var last = event.results.length - 1;
-		  var word = event.results[last][0].transcript;
-		  console.log('Result received: ' + word);
-			$text.val(word);
-			searchCity.check($text.val());
-		}
+			speechResult(event);
+		};
 
 		recognition.onspeechend = function() {
-		  recognition.stop();
-		}
-
-		recognition.onnomatch = function(event) {
-		  console.log("I didn't recognise that color.");
-		}
+			speechEnd();
+		};
 
 		recognition.onerror = function(event) {
-		  console.log('Error occurred in recognition: ' + event.error);
-		}
+			speechError(event);
+		};
 
   };
 
@@ -87,8 +78,7 @@ var speechInput = (function () {
   }
 
   return {
-    start: _init,
-    publicFunction: _privateFunction
+    start: _init
   };
 
 })();
