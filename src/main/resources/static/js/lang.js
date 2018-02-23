@@ -12,7 +12,6 @@ var lang = (function () {
 
   /* PRIVATE BUSINESS FUNCTIONS */
   var ajaxCall = function() {
-
 		$.ajax({
 			url: '/language',
 			type: "GET",
@@ -56,5 +55,6 @@ var lang = (function () {
   };
 
 })();
+
 
 lang.start();
