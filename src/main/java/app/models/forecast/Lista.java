@@ -1,4 +1,4 @@
-package app.models;
+package app.models.forecast;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

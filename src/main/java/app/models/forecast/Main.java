@@ -1,4 +1,4 @@
-package app.models;
+package app.models.forecast;
 
 public class Main {
 	

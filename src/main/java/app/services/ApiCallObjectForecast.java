@@ -2,7 +2,7 @@ package app.services;
 
 import org.springframework.web.client.RestTemplate;
 
-import app.models.Forecast;
+import app.models.forecast.Forecast;
 
 public class ApiCallObjectForecast {
 	private String url;

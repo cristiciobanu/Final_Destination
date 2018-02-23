@@ -3,8 +3,9 @@ package app.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import app.models.Lista;
+
 import app.models.Management;
+import app.models.forecast.Lista;
 import app.services.ApiCallObjectForecast;
 import app.utils.urlBuilderX;
 
