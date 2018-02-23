@@ -10,7 +10,6 @@ import app.utils.Language;
 import app.utils.urlBuilderX;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 
 @Controller
@@ -22,7 +21,7 @@ public class Weather_StationController {
 	  		  @RequestParam(value="lang", required=false, defaultValue="en") String lang) throws Exception{
 		  
 		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(id, lang));
-		  String oggi = new SimpleDateFormat("dd MMMM", Locale.forLanguageTag(lang)).format(Calendar.getInstance().getTime());
+		  String oggi = new SimpleDateFormat("dd MMMM").format(Calendar.getInstance().getTime());
 		  
 		  Language.setCurrentLang(lang);
 		  
