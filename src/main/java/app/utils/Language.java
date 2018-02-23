@@ -1,7 +1,5 @@
 package app.utils;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -9,8 +7,11 @@ import java.util.TreeMap;
 
 public class Language {
 	
-	public static final char[] CURRENTLANG = {'i','t'};
-	public static final String CURRENTLANGS = "";
+	public static Map<String, String> currentLang;
+	static{
+		currentLang= new TreeMap<String, String>();
+		currentLang.put("lang", "");
+	}
 	
 	public static final Map<String, String> language;
 	static {
@@ -62,50 +63,11 @@ public class Language {
 		return ret;	
 	}
 	
-	 public static String getCurrentLang() throws Exception, Exception
-	    {
-		//try updating a String field first
-         Field field = Language.class.getDeclaredField( "CURRENLANG" );
-         field.setAccessible( true );
-
-         //'modifiers' - it is a field of a class called 'Field'. Make it accessible and remove
-         //'final' modifier for our 'CONSTANT' field
-         Field modifiersField = Field.class.getDeclaredField( "modifiers" );
-         modifiersField.setAccessible( true );
-         modifiersField.setInt( field, field.getModifiers() & ~Modifier.FINAL );
-
-         //it updates a field, but it was already inlined during compilation...
-         field.set( null, new String(CURRENTLANG) );
-         
-         return getConstantReflection();
-	    }
-	 
-	 public static String getConstantReflection(){
-		 try{
-			 final Field fld = Language.class.getDeclaredField( "CURRENTLANG" );
-	            return (String) fld.get( null );
-	        }catch (NoSuchFieldException e) {
-	            return null;
-	        }catch (IllegalAccessException e) {
-	            return null;
-	        }
-	}
-
-	public static void setConstant(String lang) throws Exception, Exception{
-		{
-            //now try to update not constant expression type field
-            Field field = Language.class.getDeclaredField( "CURRENTLANG" );
-            field.setAccessible( true );
- 
-            //'modifiers' - it is a field of a class called 'Field'. Make it accessible and remove
-            //'final' modifier for our 'CONSTANT' field
-            Field modifiersField = Field.class.getDeclaredField( "modifiers" );
-            modifiersField.setAccessible( true );
-            modifiersField.setInt( field, field.getModifiers() & ~Modifier.FINAL );
- 
-            //this update should actually work
-            field.set( null, new String(lang).toCharArray() );
-        }
+	public static Map<String, String> getCurrentLang() {
+		return currentLang;
 	}
 	
+	public static void setCurrentLang(String lang) {
+		currentLang.replace("lang", Language.getCurrentLang().get("lang"), lang);
+	}
 }

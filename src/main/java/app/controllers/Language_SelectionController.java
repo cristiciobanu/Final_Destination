@@ -11,8 +11,16 @@ import app.utils.Language;
 public class Language_SelectionController {
 	
 	@RequestMapping("/language")
-	public Object get_image_city() throws JsonProcessingException {
+	public Object language() throws JsonProcessingException {
 		
 	    return Language.ret();
 	}
+	
+	@RequestMapping("/currentLang")
+	public Object urrentLang() throws JsonProcessingException {
+		
+	    return Language.getCurrentLang();
+	}
+	
+	
 }

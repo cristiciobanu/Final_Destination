@@ -18,14 +18,16 @@ public class Weather_StationController {
 	  @RequestMapping("/weather_station")
 	  public String weather_station(
 			  @RequestParam(value="id", required=false, defaultValue="3181928") String id, Model model,
-	  		  @RequestParam(value="lang", required=false, defaultValue=new String(Language.CURRENTLANG)) String lang) throws Exception{
+	  		  @RequestParam(value="lang", required=false, defaultValue="en") String lang) throws Exception{
 		  
 		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(id, lang));
-		  Language.setConstant(lang);
 		  String oggi = new SimpleDateFormat("dd MMMM").format(Calendar.getInstance().getTime());
+		  
+		  Language.setCurrentLang(lang);
 		  
 		  model.addAttribute("infoWeather", y.getResult());  
 		  model.addAttribute("oggi", oggi);
+		  model.addAttribute("lang", lang);
 		   
 	      return "weather_station";
 	  }

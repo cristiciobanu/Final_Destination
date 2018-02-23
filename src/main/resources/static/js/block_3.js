@@ -3,7 +3,8 @@ var searchCity = (function () {
   /* DECLARING VARIABLES */
 	var $wrapper;
   var $lista;
-	var $hiddenInput;
+	var $hiddenInputId;
+	var $hiddenInputL;
 	var $form;
 	var BOOLEAN;
 
@@ -11,7 +12,8 @@ var searchCity = (function () {
   function _setup() {
     $wrapper = $('.search');
     $lista = $('.lista');
-		$hiddenInput = $('.search FORM input[type=hidden]');
+		$hiddenInputId = $('.search FORM  input[name=id]');
+		$hiddenInputL = $('.search FORM  input[name=lang]');
 		$form =  $('.search FORM');
 		BOOLEAN = true;
   };
@@ -75,7 +77,8 @@ var searchCity = (function () {
 	const refresh = function($this){
 		getData("/getId?url="+$this.data('id')).then(
 			function(response) {
-				$hiddenInput.val(response.geoname_id);
+				$hiddenInputId.val(response.geoname_id);
+				$hiddenInputL.val($('.data input[name=lang]').val());
 				BOOLEAN = false;
 				$form.submit();
 			},
