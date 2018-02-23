@@ -1,15 +1,14 @@
 var moduloPrevisioni = (function () {
 
   /* DECLARING VARIABLES */
-  var $city,$url,$article,index;
-
+	var $appendTO, $cityID;
   /* CACHING VARIABLES */
   function _setup() {
-		$city = "bologna";
-
-		$article=("<article class='previsione'></article>");
+		$appendTO = $(".previsioniSettimana");
+		$cityID = $(".nome-citta");
 	}
-   /* PRIVATE BUSINESS FUNCTIONS */
+
+  /* PRIVATE BUSINESS FUNCTIONS */
 
 	var _ajaxCallFromServer = function (){
 		$.ajax({
@@ -17,6 +16,7 @@ var moduloPrevisioni = (function () {
       url: "/greeting",
       dataType: 'json',
       cache: false,
+			data: {"id": $cityID.data("id")},
 			success: function (data){
 				_printPrevisioni(data);
 			}
@@ -28,7 +28,7 @@ var moduloPrevisioni = (function () {
 			var min = Math.trunc(element.min);
 			var max = Math.trunc (element.max);
 
-			$(".previsioniSettimana").append("<article class='previsione'><p>  "+element.day+"<div>"+"</div>"+"</p><p class='minmax'>"+min+"°"+"</p><p class='minmax'>"+max+"°</p></article>");
+			$appendTO.append("<article><p>" + element.day + "</p><i class='fas icon_" + element.iconCode + "d'></i><p>" + min + "°</p><p>" + max + "°</p></article>");
 		});
 	}
 
@@ -45,8 +45,8 @@ var moduloPrevisioni = (function () {
       _setObserver();
     }
     catch(e) {
-        console.log('%c ' + e.message, 'color:red');
-        console.log('%c ' + e.stack, 'background: #222; color: #bada55');
+      console.log('%c ' + e.message, 'color:red');
+      console.log('%c ' + e.stack, 'background: #222; color: #bada55');
     }
   }
 

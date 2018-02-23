@@ -1,34 +1,24 @@
 package app.controllers;
 
-import java.lang.management.ManagementPermission;
-import java.util.Date;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 import app.models.Lista;
 import app.models.Management;
-import app.models.Temperature;
-import app.services.ApiCallObject;
-import app.services.ApiCallObjectWForecast;
-import app.utils.GlobalProperties;
+import app.services.ApiCallObjectForecast;
+import app.utils.urlBuilderX;
 
 @RestController
 public class Weather_JsonController {
 	
 	@RequestMapping("/greeting")
     public Object greeting(
-    		@RequestParam(value="city", required = false, defaultValue="bologna") String city) throws Exception {
+    		@RequestParam(value="id", required=false, defaultValue="3181928") String id) throws Exception {
     	
-    	UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPathForecast()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", city).queryParam("units", "metric").build();
+    	ApiCallObjectForecast y = new ApiCallObjectForecast(urlBuilderX.buildSearchForecastUrl(id));
     	
-    	ApiCallObjectWForecast y = new ApiCallObjectWForecast(urlWeather.toString());
     	
+    	// MODIFICARE
     	Management m = new Management();
     	
     	Lista[] l = y.getResult().getList();
@@ -37,11 +27,9 @@ public class Weather_JsonController {
     	for (int i = 0; i < l.length; i++) {
     		Lista li = l[i];
 			m.addGiorniTemperature(li.getDt_txt(), li.getMain().getTemp(),li.getMain().getTemp_max(),li.getMain().getTemp_min());
-			m.addIcon(li.getWeather().getIcon(), li.getDt_txt());
+			m.addIcon(li.getWeather()[0].getIcon(), li.getDt_txt());
 		}
     	
         return m.jsonTemperature();
     }
-	
-
 }

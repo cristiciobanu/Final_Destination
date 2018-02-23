@@ -3,6 +3,7 @@
 	bottom: 0;
 	position: fixed;
 	z-index: 20;
+	background-color: white;
 }
 
 .lista {
@@ -10,13 +11,14 @@
 	bottom: 100%;
 	left: 20px;
 	width: calc(100% - 40px);
+	background-color: white;
+	padding-bottom: 20px;
 
 	li {
 		background-color: #fafafa;
 		text-align: left;
 		border: 1px solid lightgrey;
-		border-radius: 10px;
-		margin: 2px;
+		border-radius: 2px;
 		padding: 5px;
 		color: grey;
 		min-height: 50px;
@@ -46,6 +48,7 @@
 		border-bottom-left-radius: 10px;
 		border: 1.5px solid darkgrey;
 		border-right: none;
+		outline: none;
 	}
 
 	i {

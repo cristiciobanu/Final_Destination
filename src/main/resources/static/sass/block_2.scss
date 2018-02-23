@@ -1,12 +1,15 @@
 .previsioniSettimana {
-	article{
+	margin-bottom: 50px;
+
+	article {
 		display: flex;
-		background-color: #fafafa;
-		border: 1px solid white;
 		justify-content: space-between;
-		padding: 20px 0;
-		.minmax{
-			text-align: right;
-		}
+		background-color: #fafafa;
+		padding: 20px;
+		border-bottom: 1px solid white;
+	}
+
+	i {
+		font-size: 28px;
 	}
 }

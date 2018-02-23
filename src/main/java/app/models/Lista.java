@@ -9,7 +9,7 @@ public class Lista{
 	
 	private String dt_txt;
 	private Main main;
-	private Weather weather;
+	private Weather[] weather;
 	
 	public String getDt_txt() {
 		return dt_txt;
@@ -23,12 +23,10 @@ public class Lista{
 	public void setMain(Main main) {
 		this.main = main;
 	}
-	public Weather getWeather() {
+	public Weather[] getWeather() {
 		return weather;
 	}
-	public void setWeather(Weather weather) {
+	public void setWeather(Weather[] weather) {
 		this.weather = weather;
 	}
-	
-	
 }

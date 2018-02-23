@@ -26,5 +26,15 @@ public class urlBuilderX {
 			      .path(GlobalProperties.getTeleportPathCities()).queryParam("search", city).queryParam("limit", 10).build();
 		  return url.toString();
 	  }
+	  
+	  public static String buildSearchForecastUrl (String id) {
+		  UriComponents url = UriComponentsBuilder.newInstance()
+			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
+			      .path(GlobalProperties.getWeatherPathForecast()).queryParam("appid", GlobalProperties.getWeatherId())
+			      .queryParam("id", id).queryParam("units", "metric").build();
+		  return url.toString();
+	  }
+	  
+	  
 
 }
