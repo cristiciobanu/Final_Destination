@@ -6,6 +6,7 @@
 		<p th:text="${infoWeather.weather[0].description}" class="condizione" />
 		<p th:text="${oggi}"/>
 		<p th:text="${infoWeather.main.temp} + '°'" />
+		<input type="hidden" name="lang" th:value="${lang}"/>
 	</div>
 	<div class="overlay"></div>
 </section>
