@@ -16,9 +16,10 @@ public class Weather_StationController {
 	
 	  @RequestMapping("/weather_station")
 	  public String weather_station(
-			  @RequestParam(value="id", required=false, defaultValue="3181928") String id, Model model) {
+			  @RequestParam(value="id", required=false, defaultValue="3181928") String id, Model model,
+	  		  @RequestParam(value="lang", required=false, defaultValue="en") String lang){
 		  
-		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(id));
+		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(id, lang));
 		  String oggi = new SimpleDateFormat("dd MMMM").format(Calendar.getInstance().getTime());
 		  
 		  model.addAttribute("infoWeather", y.getResult());  
