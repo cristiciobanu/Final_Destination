@@ -35,7 +35,6 @@ var lang = (function () {
   /* DECLARING EVENT HANDLER */
   function _setObserver() {
     $link.on('click',function(){
-			debugger;
 			$('FORM').submit();
 		});
   };
