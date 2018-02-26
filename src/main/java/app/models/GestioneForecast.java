@@ -40,11 +40,7 @@ public class GestioneForecast {
 				index++;
 			}
 			else {
-				DatiGiorno temp = new DatiGiorno();
-				temp.setT_min(somma_min/index);
-				temp.setT_max(somma_max/index);
-				temp.setDay(data_corr);
-				temp.setIcon(findIcon(lista_icone));
+				DatiGiorno temp = new DatiGiorno(data_corr, findIcon(lista_icone), somma_max/index, somma_min/index);
 				json.add(temp);
 				
 				data_corr = costruisciData(liste[i].getDt());
@@ -56,11 +52,7 @@ public class GestioneForecast {
 			}
 		}
 		
-		DatiGiorno temp = new DatiGiorno();
-		temp.setT_min(somma_min/index);
-		temp.setT_max(somma_max/index);
-		temp.setDay(data_corr);
-		temp.setIcon(findIcon(lista_icone));
+		DatiGiorno temp = new DatiGiorno(data_corr, findIcon(lista_icone), somma_max/index, somma_min/index);
 		json.add(temp);
 	}
 	

@@ -4,6 +4,14 @@ public class DatiGiorno {
 	private String day, icon;
 	private double t_max, t_min;
 	
+	public DatiGiorno(String day, String icon, double t_max, double t_min) {
+		super();
+		this.day = day;
+		this.icon = icon;
+		this.t_max = t_max;
+		this.t_min = t_min;
+	}
+	
 	public double getT_max() {
 		return t_max;
 	}
