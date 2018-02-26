@@ -1,11 +1,21 @@
 <!DOCTYPE HTML>
 <html>
-<head> 
-    <title>Landing Page</title> 
+<head>
+    <title>Landing Page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="css/reset.css" />
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
 </head>
 <body>
-    <p>Welcome! now click <a href="/weather_station">HERE</a>!</p>
+	<form class="" action="/geolocalize" method="GET">
+		<p>Welcome! now click <a href="#">HERE</a>!</p>
+		<select class="sel" name="lang">
+		</select>
+		<input type="hidden" name="lat" value=""/>
+		<input type="hidden" name="lon" value="">
+	</form>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/lang.js" charset="utf-8"></script>
+<script src="js/geo.js" charset="utf-8"></script>
 </html>

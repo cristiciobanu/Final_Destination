@@ -2,14 +2,16 @@ package app.services;
 
 import org.springframework.web.client.RestTemplate;
 
-public class ApiCallObjects {
+import app.models.GetId;
+
+public class ApiCallObjectId {
 	private String url;
-	private Object[] result;
+	private GetId result;
 	
-	public ApiCallObjects(String url) {
+	public ApiCallObjectId(String url) {
 		setUrl(url);
 		RestTemplate restTemplate = new RestTemplate();
-		setResult(restTemplate.getForObject(getUrl(), Object[].class));
+		setResult(restTemplate.getForObject(getUrl(), GetId.class));
 	}
 	
 	public void setUrl(String url) {
@@ -20,11 +22,11 @@ public class ApiCallObjects {
 		return url;
 	}
 	
-	public void setResult(Object[] result) {
+	public void setResult(GetId result) {
 		this.result = result;
 	}
 	
-	public Object[] getResult() {
+	public GetId getResult() {
 		return result;
 	}
 }

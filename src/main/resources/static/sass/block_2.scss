@@ -1,0 +1,28 @@
+.previsioniSettimana {
+	margin-bottom: 50px;
+
+	article {
+		display: flex;
+		justify-content: space-between;
+		background-color: $tabella-bg-color;
+		padding: 20px;
+		border-bottom: 1px solid white;
+	}
+
+	i {
+		font-size: 28px;
+		width: 30%;
+	}
+	p {
+		width: 10%;
+		text-transform: capitalize;
+
+		&:last-child {
+			text-align: right;
+		}
+
+		&:first-child {
+			width: 50%;
+		}
+	}
+}

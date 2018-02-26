@@ -3,26 +3,22 @@ package app.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import app.services.ApiCallObject;
-import app.utils.GlobalProperties;
+import app.models.GestioneForecast;
+import app.services.ApiCallObjectForecast;
+import app.utils.urlBuilderX;
 
 @RestController
 public class Weather_JsonController {
 	
-	@RequestMapping("/greeting")
-    public Object greeting(
-    		@RequestParam(value="city", required = false, defaultValue="london") String city) {
+	@RequestMapping("/previsioni")
+    public Object previsioni(
+    		@RequestParam(value="id", required=false, defaultValue="3181928") String id,
+    			@RequestParam(value="lang", required=false, defaultValue="en") String lang) throws Exception {
     	
-    	UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPath()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", city).build();
+    	ApiCallObjectForecast y = new ApiCallObjectForecast(urlBuilderX.buildSearchForecastUrl(id));
+    	GestioneForecast x = new GestioneForecast(y.getResult(), lang);
     	
-    	ApiCallObject y = new ApiCallObject(urlWeather.toString());
-    	
-        return y.getResult();
+    	return x.getResult();
     }
 }

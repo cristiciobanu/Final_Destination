@@ -3,34 +3,51 @@ package app.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import app.services.ApiCallObject;
-import app.services.ApiCallObjects;
-import app.utils.GlobalProperties;
+import app.utils.Language;
+import app.utils.urlBuilderX;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 
 @Controller
 public class Weather_StationController {
 	
 	  @RequestMapping("/weather_station")
-	  public String weather(Model model) {
+	  public String weather_station(
+			  @RequestParam(value="id", required=false, defaultValue="3181928") String id, Model model,
+	  		  @RequestParam(value="lang", required=false, defaultValue="en") String lang) throws Exception{
 		  
-		  UriComponents urlCams = UriComponentsBuilder.newInstance()
-			      .scheme("http").host(GlobalProperties.getCamsHost())
-			      .path(GlobalProperties.getCamsPath()).build();
+		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherUrl(id, lang));
+		  String oggi = new SimpleDateFormat("dd MMMM", Locale.forLanguageTag(lang)).format(Calendar.getInstance().getTime());
 		  
-		  ApiCallObjects x = new ApiCallObjects(urlCams.toString());
-		  model.addAttribute("infoCams", x.getResult());
+		  Language.setCurrentLang(lang);
 		  
-		  UriComponents urlWeather = UriComponentsBuilder.newInstance()
-			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
-			      .path(GlobalProperties.getWeatherPath()).queryParam("appid", GlobalProperties.getWeatherId())
-			      .queryParam("q", "london").build();
+		  model.addAttribute("infoWeather", y.getResult());  
+		  model.addAttribute("oggi", oggi);
+		  model.addAttribute("lang", lang);
+		   
+		  return "weather_station";
+	  }
+	  
+	  @RequestMapping("/geolocalize")
+	  public String geolocalize(
+			  @RequestParam(value="lat", required=false) String lat, Model model,
+	  		  @RequestParam(value="lon", required=false) String lon,
+	  		  @RequestParam(value="lang", required=false) String lang) throws Exception{
 		  
-		  ApiCallObject y = new ApiCallObject(urlWeather.toString());
-	      model.addAttribute("infoWeather", y.getResult());
-	      
-	      return "weather_station";
+		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherGeo(lat, lon, lang));
+		  String oggi = new SimpleDateFormat("dd MMMM", Locale.forLanguageTag(lang)).format(Calendar.getInstance().getTime());
+		  
+		  Language.setCurrentLang(lang);
+		  
+		  model.addAttribute("infoWeather", y.getResult());  
+		  model.addAttribute("oggi", oggi);
+		  model.addAttribute("lang", lang);
+		   
+		  return "weather_station";
 	  }
 }
