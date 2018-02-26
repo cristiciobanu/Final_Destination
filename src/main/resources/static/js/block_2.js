@@ -1,11 +1,13 @@
 var moduloPrevisioni = (function () {
 
   /* DECLARING VARIABLES */
-	var $appendTO, $cityID;
+	var $appendTO, $cityID, $lang;
+
   /* CACHING VARIABLES */
   function _setup() {
 		$appendTO = $(".previsioniSettimana");
 		$cityID = $(".nome-citta");
+		$lang = $(".condizione");
 	}
 
   /* PRIVATE BUSINESS FUNCTIONS */
@@ -13,10 +15,10 @@ var moduloPrevisioni = (function () {
 	var _ajaxCallFromServer = function (){
 		$.ajax({
 			type: 'GET',
-      url: "/greeting",
+      url: "/previsioni",
       dataType: 'json',
       cache: false,
-			data: {"id": $cityID.data("id")},
+			data: {"id": $cityID.data("id"), "lang": $lang.data("lang")},
 			success: function (data){
 				_printPrevisioni(data);
 			}
@@ -25,10 +27,10 @@ var moduloPrevisioni = (function () {
 
 	var _printPrevisioni = function (data) {
 		data.forEach (function (element) {
-			var min = Math.trunc(element.min);
-			var max = Math.trunc (element.max);
+			var min = Math.trunc(element.t_min);
+			var max = Math.trunc (element.t_max);
 
-			$appendTO.append("<article><p>" + element.day + "</p><i class='fas icon_" + element.iconCode + "d'></i><p>" + min + "°</p><p>" + max + "°</p></article>");
+			$appendTO.append("<article><p>" + element.day + "</p><i class='fas icon_" + element.icon + "'></i><p>" + min + "°</p><p>" + max + "°</p></article>");
 		});
 	}
 

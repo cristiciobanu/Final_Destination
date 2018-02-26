@@ -15,22 +15,16 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class B3Test {
-	
-  @Autowired
+public class B2Test {
+
+	@Autowired
 	private MockMvc mockMvc;
 
 	
-	@Test
-	public void testCity() throws Exception {
-		mockMvc.perform(get("/searchCity").param("search", "bologna"))
-				.andExpect(content().string(containsString("Bologna")));
-	}
-	
-	@Test
-	public void testId() throws Exception {
-		mockMvc.perform(get("/getId").param("url", "https://api.teleport.org/api/cities/geonameid:3181928/"))
-				.andExpect(content().string(containsString("3181928")));
-	}
-	
+//	@Test
+//	public void testCity() throws Exception {
+//		mockMvc.perform(get("/weather_station").param("id", "3181928"))
+//				.andExpect(content().string(containsString("Bologna")));
+//	}
+
 }

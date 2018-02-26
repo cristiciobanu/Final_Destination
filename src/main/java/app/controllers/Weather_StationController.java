@@ -30,6 +30,6 @@ public class Weather_StationController {
 		  model.addAttribute("oggi", oggi);
 		  model.addAttribute("lang", lang);
 		   
-	      return "weather_station";
+		  return "weather_station";
 	  }
 }

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Lista{
 	
 	private String dt_txt;
+	private long dt;
 	private Main main;
 	private Weather[] weather;
 	
@@ -28,5 +29,11 @@ public class Lista{
 	}
 	public void setWeather(Weather[] weather) {
 		this.weather = weather;
+	}
+	public long getDt() {
+		return dt;
+	}
+	public void setDt(long dt) {
+		this.dt = dt;
 	}
 }

@@ -75,7 +75,12 @@
     padding: 20px;
     border-bottom: 1px solid white; }
   .previsioniSettimana i {
-    font-size: 28px; }
+    font-size: 28px;
+    width: 30%; }
+  .previsioniSettimana p {
+    width: 10%; }
+    .previsioniSettimana p:first-child {
+      width: 50%; }
 
 .search {
   width: 100%;
@@ -89,8 +94,7 @@
   bottom: 100%;
   left: 20px;
   width: calc(100% - 40px);
-  background-color: white;
-  padding-bottom: 20px; }
+  background-color: white; }
   .lista li {
     background-color: #fafafa;
     text-align: left;
@@ -101,6 +105,8 @@
     min-height: 50px;
     display: flex;
     align-items: center; }
+    .lista li:last-child {
+      margin-bottom: 20px; }
     .lista li:hover {
       color: #484747;
       font-weight: bold;
