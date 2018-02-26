@@ -14,7 +14,7 @@ import java.util.Locale;
 
 
 @Controller
-public class Weather_StationController {
+public class WeatherController {
 	
 	  @RequestMapping("/weather_station")
 	  public String weather_station(

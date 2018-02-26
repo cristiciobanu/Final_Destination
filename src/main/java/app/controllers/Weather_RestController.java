@@ -9,7 +9,7 @@ import app.services.ApiCallObjectForecast;
 import app.utils.urlBuilderX;
 
 @RestController
-public class Weather_JsonController {
+public class Weather_RestController {
 	
 	@RequestMapping("/previsioni")
     public Object previsioni(

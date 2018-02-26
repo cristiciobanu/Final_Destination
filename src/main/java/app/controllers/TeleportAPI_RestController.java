@@ -9,7 +9,7 @@ import app.services.ApiCallObjectId;
 import app.utils.urlBuilderX;
 
 @RestController
-public class Weather_InputController {
+public class TeleportAPI_RestController {
 	
 	@RequestMapping("/searchCity")
     public Object searchCity( @RequestParam(value="search", required = false) String city ) {
@@ -26,4 +26,13 @@ public class Weather_InputController {
     	
         return y.getResult();
     }
+	
+	@RequestMapping("/get_image_city")
+	public Object get_image_city(
+			@RequestParam(value="city", required = false) String city) {
+		
+		ApiCallObject y = new ApiCallObject(urlBuilderX.buildImageUrl(city));
+		
+	    return y.getResult();
+	}
 }

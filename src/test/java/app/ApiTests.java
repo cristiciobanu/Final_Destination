@@ -15,14 +15,19 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class B3Test {
-	
-  @Autowired
+public class ApiTests {
+
+	@Autowired
 	private MockMvc mockMvc;
 
+	@Test
+	public void testCityById() throws Exception {
+		mockMvc.perform(get("/weather_station").param("id", "3181928"))
+				.andExpect(content().string(containsString("Bologna")));
+	}
 	
 	@Test
-	public void testCity() throws Exception {
+	public void testCityByName() throws Exception {
 		mockMvc.perform(get("/searchCity").param("search", "bologna"))
 				.andExpect(content().string(containsString("Bologna")));
 	}
@@ -32,5 +37,4 @@ public class B3Test {
 		mockMvc.perform(get("/getId").param("url", "https://api.teleport.org/api/cities/geonameid:3181928/"))
 				.andExpect(content().string(containsString("3181928")));
 	}
-	
 }

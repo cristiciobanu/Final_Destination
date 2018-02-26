@@ -21,6 +21,4 @@ public class Language_SelectionController {
 		
 	    return Language.getCurrentLang();
 	}
-	
-	
 }

@@ -22,7 +22,7 @@ import app.services.ApiCallObjectForecast;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class B2Test {
+public class LogicTests {
 
 	String res, icon;
 	double result, apiMax, apiMin;
