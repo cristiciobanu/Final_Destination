@@ -9,6 +9,8 @@
 
 body {
   margin: 0 auto;
+	font: $font-stack;
+	letter-spacing: $letter-spacing;
 }
 
 // Medium devices (tablets, 768px and up)

@@ -26,7 +26,12 @@ var lang = (function () {
   var stampa = function(data) {
 
 		for(var i = 0; i < Object.keys(data).length; i++){
-			$select.append("<option value="+data[i].iso+">"+data[i].name+"</option>");
+			if(data[i].iso == "en"){
+					$select.append("<option selected='selected' value="+data[i].iso+">"+data[i].name+"</option>");
+			}
+			else {
+				$select.append("<option value="+data[i].iso+">"+data[i].name+"</option>");
+			}
 		}
   };
   /* END PRIVATE BUSINESS FUNCTIONS */
