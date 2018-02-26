@@ -35,6 +35,15 @@ public class urlBuilderX {
 		  return url.toString();
 	  }
 	  
+	  public static String buildWeatherGeo (String lat, String lon, String lang) {
+		  UriComponents url = UriComponentsBuilder.newInstance()
+			      .scheme(GlobalProperties.getScheme()).host(GlobalProperties.getWeatherHost())
+			      .path(GlobalProperties.getWeatherPathWeather()).queryParam("appid", GlobalProperties.getWeatherId())
+			      .queryParam("lat", lat).queryParam("units", "metric").queryParam("lon", lon).queryParam("lang", lang).build();
+		  return url.toString();
+	  }
+	  
+	  
 	  
 
 }

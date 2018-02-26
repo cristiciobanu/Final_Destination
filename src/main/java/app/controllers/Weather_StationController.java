@@ -32,4 +32,22 @@ public class Weather_StationController {
 		   
 		  return "weather_station";
 	  }
+	  
+	  @RequestMapping("/geolocalize")
+	  public String geolocalize(
+			  @RequestParam(value="lat", required=false) String lat, Model model,
+	  		  @RequestParam(value="lon", required=false) String lon,
+	  		  @RequestParam(value="lang", required=false) String lang) throws Exception{
+		  
+		  ApiCallObject y = new ApiCallObject(urlBuilderX.buildWeatherGeo(lat, lon, lang));
+		  String oggi = new SimpleDateFormat("dd MMMM", Locale.forLanguageTag(lang)).format(Calendar.getInstance().getTime());
+		  
+		  Language.setCurrentLang(lang);
+		  
+		  model.addAttribute("infoWeather", y.getResult());  
+		  model.addAttribute("oggi", oggi);
+		  model.addAttribute("lang", lang);
+		   
+		  return "weather_station";
+	  }
 }
