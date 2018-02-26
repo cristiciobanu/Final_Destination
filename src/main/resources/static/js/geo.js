@@ -12,16 +12,16 @@ var geo = (function () {
   /* PRIVATE BUSINESS FUNCTIONS */
   var getLocation = function () {
   	if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        console.log("Geolocation is not supported by this browser.");
+      console.log("Geolocation is not supported by this browser.");
     }
 	};
 
   var showPosition = function (position) {
     $lat.val(position.coords.latitude.toFixed(2));
     $lon.val(position.coords.longitude.toFixed(2));
-};
+	};
   /* END PRIVATE BUSINESS FUNCTIONS */
 
   /* DECLARING EVENT HANDLER */
